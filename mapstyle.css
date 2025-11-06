@@ -2,24 +2,24 @@
     background-color: black;
     position: relative;
     background-color: white;
-    min-width: 79vw;
-    max-width: 80vw;
+    min-width: 40vw;
+    max-width: 40vw;
     max-height: 80vh;
     overflow: scroll;
 }
 
 #map_floorplan{
-    width: 100%;
+    width: 1000px;
+    height: auto;
 }
 
 #map_paths{
     position: absolute;
-    width: 100%;
 }
 
 .pin {
-    width: 10px;
-    height: 10px;
+    width: 24px;
+    height: 24px;
     top: 16px;
     left: 16px;
     border-radius: 50%;

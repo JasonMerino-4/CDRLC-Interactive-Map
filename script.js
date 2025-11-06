@@ -6,17 +6,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     class pin {
-        constructor(name, type, floor){
+        constructor(name, type, floor, xPosition, yPosition){
             this.pinName = name;
             this.pinType = type;
             this.pinFloor = floor
-            this.pinElement = this.createPinHTMLElement();
-            this.pinEdges = new Set();
+            this.pinElement = this.createPinHTMLElement(xPosition, yPosition);
+            this.pinNeighbors = new Set();
         }
 
-        createPinHTMLElement() {
+        createPinHTMLElement(xPosition, yPosition) {
             let newPinElement = document.createElement("div");
             newPinElement.classList.add("pin");
+            newPinElement.style.left = xPosition;
+            newPinElement.style.top = yPosition;
 
             newPinElement.addEventListener("click", () => {
                 pinManagment.focusedPin = this;
@@ -24,13 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
     
             return newPinElement;
         }
+
+        getIntYPosition() {
+            return parseInt(this.pinElement.style.top) || 0;
+        }
+
+        getIntXPosition() {
+            return parseInt(this.pinElement.style.left) || 0;
+        }
     }
 
     const pinManagment = {
         pinMap: new Map(),
         focusedPin: null,
-        prevFocusedPin: null,
-        numPathPins: 0,
 
         removePin: function (pin) {
             if (pin != null){
@@ -46,63 +54,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
         },
 
-        addRoomPin: function (pinName, pinType, pinFloor){
-            if (pinName == null || pinName == ""){
+        addPin: function (name, type, floor, xPosition, yPosition){
+            if (name == null || name == ""){
                 return false;
             }
 
-            if (pinType == null || pinType == ""){
+            if (type == null || type == ""){
                 return false;
             }
 
-            if (pinFloor == null || pinFloor == ""){
+            if (floor == null || floor == ""){
                 return false;
             }
 
-            if (this.pinMap.has(pinName)){
+            if (this.pinMap.has(name)){
                 return false;
             }
 
-            let newPin = new pin(pinName, pinType, pinFloor);
+            let newPin = new pin(name, type, floor, xPosition, yPosition);
 
             mapWrapper.appendChild(newPin.pinElement);
-            this.pinMap.set(pinName, newPin);
-            this.prevFocusedPin = this.focusedPin;
+            this.pinMap.set(name, newPin);
             this.focusedPin = newPin;
             return true;
         },
 
-        addPathPin: function (pinType, pinFloor){
-            if (pinType == null || pinType == ""){
-                return false;
-            }
 
-            if (pinFloor == null || pinFloor == ""){
-                return false;
-            }
+        addEdges: function (name, neighbors){
+            if (name != null && neighbors != null){
+                let pinObj = this.pinMap.get(name);
 
-            let newPin = new pin(this.numPathPins.toString(), pinType, pinFloor);
-
-            mapWrapper.appendChild(newPin.pinElement);
-            this.pinMap.set(this.numPathPins.toString(), newPin);
-            this.prevFocusedPin = this.focusedPin;
-            this.focusedPin = newPin;
-            this.numPathPins++;
-
-            return true;
-        },
-
-        addEdge: function (pin1, pin2){
-            if (pin1 != null && pin2 != null){
-                pin1.pinEdges.add(pin2.pinName);
-                pin2.pinEdges.add(pin1.pinName);
-            }
-        },
-
-        removeEdge: function (pin1, pin2){
-            if (pin1 != null && pin2 != null){
-                pin1.pinEdges.delete(pin2.pinName);
-                pin2.pinEdges.delete(pin1.pinName);
+                neighbors.forEach((name) => {
+                    pinObj.pinNeighbors.add(this.pinMap.get(name));
+                })
             }
         },
 
@@ -122,28 +106,37 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     };
 
-    async function getData() {
-        const floor1URL = "https://github.com/JasonMerino-4/CDRLC-Interactive-Map/blob/main/Floordata/floor1.json"
+    function loadFloorData(){
+        const floorURLs = [
+            ".\\Floordata\\floor1.json",
+        ]
 
-        try {
-            const response = await fetch(floor1URL);
-            if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log(result);
-        } catch (error) {
-            console.error(error.message);
-        }
+        floorURLs.forEach((url) => {
+            fetchData(url);
+        })
     }
 
-    getData();
+    async function fetchData(url) {
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                data.forEach((pinObj) => {
+                    pinManagment.addPin(pinObj.name, pinObj.type, pinObj.floor, pinObj.xPosition, pinObj.yPosition);
+                })
+
+                data.forEach((pinObj) => {
+                    pinManagment.addEdges(pinObj.name, pinObj.edges);
+                })
+
+                drawPaths();
+            })
+            .catch((error) => console.error("Error loading JSON file", error));
+    }
+
+    loadFloorData();
 
     function addLine(pin1, pin2){
         let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line")
-
-        mapPathsSVG.to
 
         newLine.setAttribute("x1", pin1.getIntXPosition());
         newLine.setAttribute("y1", pin1.getIntYPosition());
@@ -154,20 +147,30 @@ document.addEventListener("DOMContentLoaded", function () {
         mapPathsSVG.appendChild(newLine);
     }
 
+    //removes all lines from map
     function clearMapPaths(){
         while (mapPathsSVG.firstChild != null){
             mapPathsSVG.removeChild(mapPathsSVG.lastChild);
         }
     }
 
-    function drawPaths(){
+    function drawPaths(){ 
+        fixImageSVG();   
         clearMapPaths();
 
-        pinManagment.pinMap.forEach((pin, name) => {
-            pin.pinEdges.forEach((otherPinName) => {
-                addLine(pin, pinManagment.pinMap.get(otherPinName));
+        pinManagment.pinMap.forEach((pinObj, name) => {
+            pinObj.pinNeighbors.forEach((neighbor) => {
+                addLine(pinObj, neighbor);
             })
-        });
-
+        })
     }
+
+    function fixImageSVG(){
+        mapPathsSVG.style.width = mapImage.offsetWidth + "px";
+        mapPathsSVG.style.height = mapImage.offsetHeight + "px";
+    }
+
+    mapImage.addEventListener("load", fixImageSVG)
 })
+
+
