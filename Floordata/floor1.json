@@ -1,1 +1,110 @@
-
+[
+  {
+    "name": "1400N",
+    "type": "Entrance",
+    "xPosition": "368px",
+    "yPosition": "185px",
+    "edges": [
+      "11000"
+    ]
+  },
+  {
+    "name": "1400W",
+    "type": "Entrance",
+    "xPosition": "140px",
+    "yPosition": "1015px",
+    "edges": [
+      "11003"
+    ]
+  },
+  {
+    "name": "1400E",
+    "type": "Entrance",
+    "xPosition": "800px",
+    "yPosition": "1042px",
+    "edges": [
+      "11004"
+    ]
+  },
+  {
+    "name": "1400B",
+    "type": "Hallway",
+    "xPosition": "383px",
+    "yPosition": "419px",
+    "edges": [
+      "11001",
+      "11000"
+    ]
+  },
+  {
+    "name": "1400A",
+    "type": "Hallway",
+    "xPosition": "390px",
+    "yPosition": "763px",
+    "edges": [
+      "11002",
+      "11001"
+    ]
+  },
+  {
+    "name": "1400",
+    "type": "Hallway",
+    "xPosition": "434px",
+    "yPosition": "1004px",
+    "edges": [
+      "11003",
+      "11004",
+      "11002"
+    ]
+  },
+  {
+    "name": "11000",
+    "type": "Path",
+    "xPosition": "373px",
+    "yPosition": "310px",
+    "edges": [
+      "1400B",
+      "1400N"
+    ]
+  },
+  {
+    "name": "11001",
+    "type": "Path",
+    "xPosition": "383px",
+    "yPosition": "572px",
+    "edges": [
+      "1400A",
+      "1400B"
+    ]
+  },
+  {
+    "name": "11002",
+    "type": "Path",
+    "xPosition": "384px",
+    "yPosition": "894px",
+    "edges": [
+      "1400",
+      "1400A"
+    ]
+  },
+  {
+    "name": "11003",
+    "type": "Path",
+    "xPosition": "277px",
+    "yPosition": "1009px",
+    "edges": [
+      "1400W",
+      "1400"
+    ]
+  },
+  {
+    "name": "11004",
+    "type": "Path",
+    "xPosition": "621px",
+    "yPosition": "1009px",
+    "edges": [
+      "1400",
+      "1400E"
+    ]
+  }
+]
