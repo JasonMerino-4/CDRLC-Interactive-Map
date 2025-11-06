@@ -120,8 +120,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             drawPaths();
         },
-
     };
+
+    async function getData() {
+        const floor1URL = "https://github.com/JasonMerino-4/CDRLC-Interactive-Map/blob/main/Floordata/floor1.json"
+
+        try {
+            const response = await fetch(floor1URL);
+            if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log(result);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    getData();
 
     function addLine(pin1, pin2){
         let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line")
