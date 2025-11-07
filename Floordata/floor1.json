@@ -1,54 +1,472 @@
 [
   {
-    "name": "1400N",
-    "type": "Entrance",
+    "name": "1426",
+    "type": "Classroom",
     "floor": "1",
-    "xPosition": "368px",
-    "yPosition": "185px",
+    "xPosition": "299px",
+    "yPosition": "365px",
     "edges": [
-      "11000"
+      "11001",
+      "11003",
+      "11019"
     ]
   },
   {
-    "name": "1400W",
-    "type": "Entrance",
+    "name": "1411",
+    "type": "Classroom",
     "floor": "1",
-    "xPosition": "140px",
-    "yPosition": "1015px",
+    "xPosition": "245px",
+    "yPosition": "1330px",
     "edges": [
-      "11003"
+      "11048"
+    ]
+  },
+  {
+    "name": "1409",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "379px",
+    "yPosition": "1329px",
+    "edges": [
+      "11051"
+    ]
+  },
+  {
+    "name": "1407",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "518px",
+    "yPosition": "1330px",
+    "edges": [
+      "11033"
+    ]
+  },
+  {
+    "name": "1405",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "653px",
+    "yPosition": "1340px",
+    "edges": [
+      "11029"
+    ]
+  },
+  {
+    "name": "1406B",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "536px",
+    "yPosition": "1142px",
+    "edges": [
+      "11031",
+      "1406A"
+    ]
+  },
+  {
+    "name": "1406A",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "658px",
+    "yPosition": "1142px",
+    "edges": [
+      "1406B",
+      "11028"
+    ]
+  },
+  {
+    "name": "1402A",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "828px",
+    "yPosition": "1269px",
+    "edges": [
+      "11025",
+      "1402B"
+    ]
+  },
+  {
+    "name": "1402B",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "829px",
+    "yPosition": "1364px",
+    "edges": [
+      "1402A",
+      "11053"
+    ]
+  },
+  {
+    "name": "1404",
+    "type": "Classroom",
+    "floor": "1",
+    "xPosition": "807px",
+    "yPosition": "1153px",
+    "edges": [
+      "11059",
+      "1404A"
     ]
   },
   {
     "name": "1400E",
     "type": "Entrance",
     "floor": "1",
-    "xPosition": "800px",
-    "yPosition": "1042px",
+    "xPosition": "798px",
+    "yPosition": "1039px",
     "edges": [
-      "11004"
+      "11023"
     ]
   },
   {
-    "name": "1400B",
-    "type": "Hallway",
+    "name": "1400W",
+    "type": "Entrance",
     "floor": "1",
-    "xPosition": "383px",
-    "yPosition": "419px",
+    "xPosition": "138px",
+    "yPosition": "1015px",
     "edges": [
-      "11001",
-      "11000"
+      "11042",
+      "11057"
     ]
   },
   {
-    "name": "1400A",
-    "type": "Hallway",
+    "name": "1400N",
+    "type": "Entrance",
     "floor": "1",
-    "xPosition": "390px",
-    "yPosition": "763px",
+    "xPosition": "367px",
+    "yPosition": "184px",
     "edges": [
-      "11002",
+      "11000",
+      "1430",
+      "11056"
+    ]
+  },
+  {
+    "name": "1S3",
+    "type": "Stairs",
+    "floor": "1",
+    "xPosition": "621px",
+    "yPosition": "1065px",
+    "edges": [
+      "11038"
+    ]
+  },
+  {
+    "name": "1S2",
+    "type": "Stairs",
+    "floor": "1",
+    "xPosition": "880px",
+    "yPosition": "1209px",
+    "edges": [
+      "11059"
+    ]
+  },
+  {
+    "name": "1S4",
+    "type": "Stairs",
+    "floor": "1",
+    "xPosition": "166px",
+    "yPosition": "1323px",
+    "edges": [
+      "11046"
+    ]
+  },
+  {
+    "name": "1S5",
+    "type": "Stairs",
+    "floor": "1",
+    "xPosition": "164px",
+    "yPosition": "903px",
+    "edges": [
+      "11058"
+    ]
+  },
+  {
+    "name": "1S1",
+    "type": "Stairs",
+    "floor": "1",
+    "xPosition": "211px",
+    "yPosition": "147px",
+    "edges": [
+      "11056"
+    ]
+  },
+  {
+    "name": "1422",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "238px",
+    "yPosition": "774px",
+    "edges": [
+      "11006",
+      "11008",
+      "11013"
+    ]
+  },
+  {
+    "name": "1422B",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "335px",
+    "yPosition": "734px",
+    "edges": [
+      "11006"
+    ]
+  },
+  {
+    "name": "1422D",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "322px",
+    "yPosition": "831px",
+    "edges": [
+      "11008"
+    ]
+  },
+  {
+    "name": "1422C",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "280px",
+    "yPosition": "938px",
+    "edges": [
+      "11008"
+    ]
+  },
+  {
+    "name": "1422A",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "244px",
+    "yPosition": "617px",
+    "edges": [
+      "11013"
+    ]
+  },
+  {
+    "name": "1424",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "316px",
+    "yPosition": "603px",
+    "edges": [
+      "11011"
+    ]
+  },
+  {
+    "name": "1423",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "325px",
+    "yPosition": "559px",
+    "edges": [
+      "11010"
+    ]
+  },
+  {
+    "name": "1426B",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "187px",
+    "yPosition": "573px",
+    "edges": [
+      "11017"
+    ]
+  },
+  {
+    "name": "1436",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "116px",
+    "yPosition": "139px",
+    "edges": [
+      "11021",
+      "1434",
+      "1432"
+    ]
+  },
+  {
+    "name": "1432",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "161px",
+    "yPosition": "154px",
+    "edges": [
+      "1436"
+    ]
+  },
+  {
+    "name": "1434",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "176px",
+    "yPosition": "100px",
+    "edges": [
+      "1436"
+    ]
+  },
+  {
+    "name": "1428",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "263px",
+    "yPosition": "182px",
+    "edges": [
       "11001"
+    ]
+  },
+  {
+    "name": "1430",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "304px",
+    "yPosition": "177px",
+    "edges": [
+      "1400N"
+    ]
+  },
+  {
+    "name": "1420",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "145px",
+    "yPosition": "1212px",
+    "edges": [
+      "11055"
+    ]
+  },
+  {
+    "name": "1413",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "98px",
+    "yPosition": "1306px",
+    "edges": [
+      "11047",
+      "11046"
+    ]
+  },
+  {
+    "name": "1410",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "415px",
+    "yPosition": "1114px",
+    "edges": [
+      "11036"
+    ]
+  },
+  {
+    "name": "1408",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "416px",
+    "yPosition": "1188px",
+    "edges": [
+      "11035"
+    ]
+  },
+  {
+    "name": "1404A",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "797px",
+    "yPosition": "1106px",
+    "edges": [
+      "1404"
+    ]
+  },
+  {
+    "name": "1416",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "240px",
+    "yPosition": "1193px",
+    "edges": [
+      "11044"
+    ]
+  },
+  {
+    "name": "1400D",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "244px",
+    "yPosition": "1094px",
+    "edges": [
+      "11043"
+    ]
+  },
+  {
+    "name": "1412",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "355px",
+    "yPosition": "1096px",
+    "edges": [
+      "1419"
+    ]
+  },
+  {
+    "name": "1419",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "288px",
+    "yPosition": "1094px",
+    "edges": [
+      "11040",
+      "11039",
+      "1412"
+    ]
+  },
+  {
+    "name": "1414",
+    "type": "Bathroom",
+    "floor": "1",
+    "xPosition": "316px",
+    "yPosition": "1163px",
+    "edges": [
+      "11041"
+    ]
+  },
+  {
+    "name": "E2",
+    "type": "Elevators",
+    "floor": "1",
+    "xPosition": "201px",
+    "yPosition": "952px",
+    "edges": [
+      "11042"
+    ]
+  },
+  {
+    "name": "E1",
+    "type": "Elevators",
+    "floor": "1",
+    "xPosition": "243px",
+    "yPosition": "964px",
+    "edges": [
+      "11042"
+    ]
+  },
+  {
+    "name": "1418",
+    "type": "Room",
+    "floor": "1",
+    "xPosition": "145px",
+    "yPosition": "1142px",
+    "edges": [
+      "11055",
+      "11047",
+      "11043"
+    ]
+  },
+  {
+    "name": "1401",
+    "type": "Hallway",
+    "floor": "1",
+    "xPosition": "508px",
+    "yPosition": "1255px",
+    "edges": [
+      "11031",
+      "11032"
     ]
   },
   {
@@ -56,10 +474,33 @@
     "type": "Hallway",
     "floor": "1",
     "xPosition": "434px",
-    "yPosition": "1004px",
+    "yPosition": "1002px",
     "edges": [
-      "11003",
-      "11004",
+      "11007",
+      "11037",
+      "11023",
+      "11039"
+    ]
+  },
+  {
+    "name": "1400A",
+    "type": "Hallway",
+    "floor": "1",
+    "xPosition": "388px",
+    "yPosition": "761px",
+    "edges": [
+      "11007",
+      "11005"
+    ]
+  },
+  {
+    "name": "1400B",
+    "type": "Hallway",
+    "floor": "1",
+    "xPosition": "385px",
+    "yPosition": "418px",
+    "edges": [
+      "11000",
       "11002"
     ]
   },
@@ -67,55 +508,651 @@
     "name": "11000",
     "type": "Path",
     "floor": "1",
-    "xPosition": "373px",
-    "yPosition": "310px",
+    "xPosition": "366px",
+    "yPosition": "236px",
     "edges": [
-      "1400B",
-      "1400N"
+      "1400N",
+      "11001",
+      "1400B"
     ]
   },
   {
     "name": "11001",
     "type": "Path",
     "floor": "1",
-    "xPosition": "383px",
-    "yPosition": "572px",
+    "xPosition": "310px",
+    "yPosition": "244px",
     "edges": [
-      "1400A",
-      "1400B"
+      "11000",
+      "1426",
+      "1428"
     ]
   },
   {
     "name": "11002",
     "type": "Path",
     "floor": "1",
-    "xPosition": "384px",
-    "yPosition": "894px",
+    "xPosition": "383px",
+    "yPosition": "480px",
     "edges": [
-      "1400",
-      "1400A"
+      "1400B",
+      "11003",
+      "11009"
     ]
   },
   {
     "name": "11003",
     "type": "Path",
     "floor": "1",
-    "xPosition": "277px",
-    "yPosition": "1009px",
+    "xPosition": "344px",
+    "yPosition": "468px",
     "edges": [
-      "1400W",
+      "11002",
+      "1426",
+      "11014"
+    ]
+  },
+  {
+    "name": "11005",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "379px",
+    "yPosition": "670px",
+    "edges": [
+      "11006",
+      "1400A",
+      "11012"
+    ]
+  },
+  {
+    "name": "11006",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "327px",
+    "yPosition": "668px",
+    "edges": [
+      "11005",
+      "1422",
+      "1422B"
+    ]
+  },
+  {
+    "name": "11007",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "378px",
+    "yPosition": "923px",
+    "edges": [
+      "1400A",
+      "11008",
       "1400"
     ]
   },
   {
-    "name": "11004",
+    "name": "11008",
     "type": "Path",
     "floor": "1",
-    "xPosition": "621px",
-    "yPosition": "1009px",
+    "xPosition": "295px",
+    "yPosition": "900px",
+    "edges": [
+      "11007",
+      "1422C",
+      "1422D",
+      "1422"
+    ]
+  },
+  {
+    "name": "11009",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "389px",
+    "yPosition": "564px",
+    "edges": [
+      "11010",
+      "11002",
+      "11012"
+    ]
+  },
+  {
+    "name": "11010",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "351px",
+    "yPosition": "570px",
+    "edges": [
+      "11009",
+      "1423"
+    ]
+  },
+  {
+    "name": "11011",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "352px",
+    "yPosition": "592px",
+    "edges": [
+      "11012",
+      "1424"
+    ]
+  },
+  {
+    "name": "11012",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "384px",
+    "yPosition": "604px",
+    "edges": [
+      "11009",
+      "11011",
+      "11005"
+    ]
+  },
+  {
+    "name": "11013",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "201px",
+    "yPosition": "650px",
+    "edges": [
+      "1422A",
+      "1422"
+    ]
+  },
+  {
+    "name": "11014",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "311px",
+    "yPosition": "520px",
+    "edges": [
+      "11003",
+      "11015"
+    ]
+  },
+  {
+    "name": "11015",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "263px",
+    "yPosition": "559px",
+    "edges": [
+      "11014",
+      "11016"
+    ]
+  },
+  {
+    "name": "11016",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "223px",
+    "yPosition": "570px",
+    "edges": [
+      "11015",
+      "11018"
+    ]
+  },
+  {
+    "name": "11017",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "210px",
+    "yPosition": "598px",
+    "edges": [
+      "11018",
+      "1426B"
+    ]
+  },
+  {
+    "name": "11018",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "233px",
+    "yPosition": "592px",
+    "edges": [
+      "11016",
+      "11017"
+    ]
+  },
+  {
+    "name": "11019",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "262px",
+    "yPosition": "320px",
+    "edges": [
+      "1426",
+      "11020"
+    ]
+  },
+  {
+    "name": "11020",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "149px",
+    "yPosition": "330px",
+    "edges": [
+      "11019",
+      "11021"
+    ]
+  },
+  {
+    "name": "11021",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "131px",
+    "yPosition": "234px",
+    "edges": [
+      "11020",
+      "1436"
+    ]
+  },
+  {
+    "name": "11023",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "749px",
+    "yPosition": "1042px",
+    "edges": [
+      "1400E",
+      "11024",
+      "1400",
+      "11038"
+    ]
+  },
+  {
+    "name": "11024",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "752px",
+    "yPosition": "1215px",
+    "edges": [
+      "11023",
+      "11025",
+      "11026",
+      "11059"
+    ]
+  },
+  {
+    "name": "11025",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "772px",
+    "yPosition": "1240px",
+    "edges": [
+      "11024",
+      "1402A"
+    ]
+  },
+  {
+    "name": "11026",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "751px",
+    "yPosition": "1257px",
+    "edges": [
+      "11024",
+      "11027",
+      "11054"
+    ]
+  },
+  {
+    "name": "11027",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "722px",
+    "yPosition": "1256px",
+    "edges": [
+      "11026",
+      "11028",
+      "11029"
+    ]
+  },
+  {
+    "name": "11028",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "717px",
+    "yPosition": "1223px",
+    "edges": [
+      "11027",
+      "1406A"
+    ]
+  },
+  {
+    "name": "11029",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "721px",
+    "yPosition": "1279px",
+    "edges": [
+      "11027",
+      "1405"
+    ]
+  },
+  {
+    "name": "11031",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "495px",
+    "yPosition": "1222px",
+    "edges": [
+      "1401",
+      "1406B"
+    ]
+  },
+  {
+    "name": "11032",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "473px",
+    "yPosition": "1255px",
+    "edges": [
+      "1401",
+      "11033",
+      "11034",
+      "11050"
+    ]
+  },
+  {
+    "name": "11033",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "469px",
+    "yPosition": "1284px",
+    "edges": [
+      "11032",
+      "1407"
+    ]
+  },
+  {
+    "name": "11034",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "464px",
+    "yPosition": "1164px",
+    "edges": [
+      "11032",
+      "11035",
+      "11036",
+      "11037"
+    ]
+  },
+  {
+    "name": "11035",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "440px",
+    "yPosition": "1164px",
+    "edges": [
+      "11034",
+      "1408"
+    ]
+  },
+  {
+    "name": "11036",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "438px",
+    "yPosition": "1138px",
+    "edges": [
+      "11034",
+      "1410"
+    ]
+  },
+  {
+    "name": "11037",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "466px",
+    "yPosition": "1071px",
+    "edges": [
+      "11034",
+      "1400"
+    ]
+  },
+  {
+    "name": "11038",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "707px",
+    "yPosition": "1065px",
+    "edges": [
+      "11023",
+      "1S3"
+    ]
+  },
+  {
+    "name": "11039",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "319px",
+    "yPosition": "1056px",
     "edges": [
       "1400",
-      "1400E"
+      "11042",
+      "1419"
+    ]
+  },
+  {
+    "name": "11040",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "279px",
+    "yPosition": "1122px",
+    "edges": [
+      "1419",
+      "11041"
+    ]
+  },
+  {
+    "name": "11041",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "275px",
+    "yPosition": "1163px",
+    "edges": [
+      "11040",
+      "1414"
+    ]
+  },
+  {
+    "name": "11042",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "209px",
+    "yPosition": "1024px",
+    "edges": [
+      "11039",
+      "11043",
+      "1400W",
+      "E2",
+      "E1"
+    ]
+  },
+  {
+    "name": "11043",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "201px",
+    "yPosition": "1111px",
+    "edges": [
+      "11042",
+      "11044",
+      "1400D",
+      "1418"
+    ]
+  },
+  {
+    "name": "11044",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "201px",
+    "yPosition": "1175px",
+    "edges": [
+      "11043",
+      "11045",
+      "1416",
+      "11055"
+    ]
+  },
+  {
+    "name": "11045",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "204px",
+    "yPosition": "1249px",
+    "edges": [
+      "11044",
+      "11046",
+      "11048",
+      "11049"
+    ]
+  },
+  {
+    "name": "11046",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "162px",
+    "yPosition": "1253px",
+    "edges": [
+      "11045",
+      "1413",
+      "1S4"
+    ]
+  },
+  {
+    "name": "11047",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "94px",
+    "yPosition": "1220px",
+    "edges": [
+      "1413",
+      "1418"
+    ]
+  },
+  {
+    "name": "11048",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "196px",
+    "yPosition": "1279px",
+    "edges": [
+      "11045",
+      "1411"
+    ]
+  },
+  {
+    "name": "11049",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "281px",
+    "yPosition": "1249px",
+    "edges": [
+      "11045",
+      "11050"
+    ]
+  },
+  {
+    "name": "11050",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "441px",
+    "yPosition": "1248px",
+    "edges": [
+      "11049",
+      "11051",
+      "11032"
+    ]
+  },
+  {
+    "name": "11051",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "438px",
+    "yPosition": "1287px",
+    "edges": [
+      "11050",
+      "1409"
+    ]
+  },
+  {
+    "name": "11053",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "778px",
+    "yPosition": "1408px",
+    "edges": [
+      "1402B",
+      "11054"
+    ]
+  },
+  {
+    "name": "11054",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "750px",
+    "yPosition": "1408px",
+    "edges": [
+      "11053",
+      "11026"
+    ]
+  },
+  {
+    "name": "11055",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "163px",
+    "yPosition": "1193px",
+    "edges": [
+      "11044",
+      "1418",
+      "1420"
+    ]
+  },
+  {
+    "name": "11056",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "362px",
+    "yPosition": "125px",
+    "edges": [
+      "1400N",
+      "1S1"
+    ]
+  },
+  {
+    "name": "11057",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "93px",
+    "yPosition": "1006px",
+    "edges": [
+      "1400W",
+      "11058"
+    ]
+  },
+  {
+    "name": "11058",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "117px",
+    "yPosition": "895px",
+    "edges": [
+      "11057",
+      "1S5"
+    ]
+  },
+  {
+    "name": "11059",
+    "type": "Path",
+    "floor": "1",
+    "xPosition": "808px",
+    "yPosition": "1214px",
+    "edges": [
+      "11024",
+      "1404",
+      "1S2"
     ]
   }
 ]
