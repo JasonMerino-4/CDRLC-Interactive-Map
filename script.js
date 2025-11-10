@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let mapPathsSVG = document.getElementById("map_paths");
     let mapImage = document.getElementById("map_floorplan");
 
-
     class pin {
         constructor(name, type, floor, xPosition, yPosition){
             this.pinName = name;
@@ -98,6 +97,195 @@ document.addEventListener("DOMContentLoaded", function () {
             return xPos + (parseInt(this.pinElement.clientWidth)/2);
         }
     }
+    
+    // ------------------- NEW: room list handling -------------------
+    const leftNavBar = document.getElementById("left_nav_bar");
+    const roomListContainer = document.createElement("div");
+    roomListContainer.id = "room_list";
+    roomListContainer.style.marginTop = "12px";
+    roomListContainer.style.maxHeight = "520px";
+    roomListContainer.style.overflowY = "auto";
+    leftNavBar.appendChild(roomListContainer);
+
+    // Build the sidebar list of rooms
+    function updateRoomList() {
+    if (!roomListContainer) return;
+    roomListContainer.innerHTML = ""; // clear first
+
+    // --------------------------- NEW: list click -> focus ---------------------------
+    if (!roomListContainer.dataset.bound) {
+    roomListContainer.addEventListener("click", (e) => {
+        const row = e.target.closest(".roomlist-item, button.roomlist-item");
+        if (!row) return;
+        const name = row.getAttribute("data-name");
+        const pinObj = pinManagment.pinMap.get(name);
+        if (!pinObj) return;
+
+        // visual feedback in the list is optional; the key is map focus+zoom:
+        focusAndZoomPin(pinObj, 150); // tweak desired zoom % if you want
+
+        // optional: highlight the clicked row
+        roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
+        row.classList.add("is-active");
+    });
+    roomListContainer.dataset.bound = "1";
+    }
+    // --------------------------------------------------------------------------------
+
+
+    const rooms = Array.from(pinManagment.pinMap.values())
+        .filter(p => p.pinType && p.pinType !== "Path") // skip connectors
+        .sort((a, b) => a.pinName.localeCompare(b.pinName, undefined, { numeric: true }));
+
+    for (const pin of rooms) {
+        const btn = document.createElement("button");
+        btn.className = "roomlist-item";
+        btn.dataset.name = pin.pinName;
+        btn.textContent = `${pin.pinName} (${pin.pinType})`;
+
+        // basic style
+        btn.style.display = "block";
+        btn.style.width = "100%";
+        btn.style.margin = "4px 0";
+        btn.style.padding = "6px 8px";
+        btn.style.borderRadius = "8px";
+        btn.style.border = "1px solid #ccc";
+        btn.style.background = "#fff";
+        btn.style.cursor = "pointer";
+        btn.style.textAlign = "left";
+
+        // ---------------- CLICK EVENT ----------------
+        btn.addEventListener("click", () => {
+        const name = btn.dataset.name;
+        const pinObj = pinManagment.pinMap.get(name);
+        if (!pinObj) return;
+
+        // remove all selections
+        document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+        document.querySelectorAll(".roomlist-item").forEach(el => el.style.background = "#fff");
+
+        // select this one
+        pinObj.pinElement.classList.add("selected");
+        pinManagment.focusedPin = pinObj;
+
+        // visually mark active in list
+        btn.style.background = "#d8e7ff";
+        });
+        
+        roomListContainer.appendChild(btn);
+        
+        }
+    }
+    // ---------------------------------------------------------------
+
+    // ========================= NEW: zoom + focus helpers =========================
+    function getZoomNumberEl() {
+        return document.getElementById("map_zoom_number");
+    }
+
+    function getCurrentZoomPercent() {
+    const el = getZoomNumberEl();
+        return el ? parseInt(el.textContent) || 100 : 100;
+    }
+
+    /** Set absolute zoom % exactly like your +/- buttons do */
+    function setZoomPercent(targetPercent) {
+        const zoomNumber = getZoomNumberEl();
+        if (!zoomNumber) return;
+
+        const currentPercent = getCurrentZoomPercent();
+        if (targetPercent === currentPercent) return;
+
+        const currentWidth = 1000 * (currentPercent / 100);
+        const newWidth = 1000 * (targetPercent / 100);
+
+        zoomNumber.textContent = `${targetPercent}%`;
+        mapImage.style.width = `${newWidth}px`;
+        fixImageSVG();
+        pinManagment.scalePins(currentWidth, newWidth); // this already calls drawPaths()
+    }
+
+    /** Center the scroll viewport on a pin (after zoom is applied) */
+    function centerOnPin(pinObj) {
+    if (!pinObj || !mapWrapper) return;
+
+    // target center in map coordinates (already scaled)
+    const cx = pinObj.getIntXCenterPosition();
+    const cy = pinObj.getIntYCenterPosition();
+
+    // figure out scroll container – mapWrapper itself
+    // (assumes CSS allows scrolling; if not, no harm)
+    const viewW = mapWrapper.clientWidth;
+    const viewH = mapWrapper.clientHeight;
+
+    let targetLeft = Math.max(0, cx - Math.floor(viewW / 2));
+    let targetTop  = Math.max(0, cy - Math.floor(viewH / 2));
+
+    // clamp to scrollable bounds if present
+    const maxLeft = Math.max(0, (mapWrapper.scrollWidth || 0) - viewW);
+    const maxTop  = Math.max(0, (mapWrapper.scrollHeight || 0) - viewH);
+
+    targetLeft = Math.min(targetLeft, maxLeft);
+    targetTop  = Math.min(targetTop,  maxTop);
+
+    if (typeof mapWrapper.scrollTo === "function") {
+        mapWrapper.scrollTo({ left: targetLeft, top: targetTop, behavior: "smooth" });
+    } else {
+        mapWrapper.scrollLeft = targetLeft;
+        mapWrapper.scrollTop  = targetTop;
+    }
+    }
+
+    /** Focus: highlight the pin, zoom (if needed), then center it */
+    function focusAndZoomPin(pinObj, desiredPercent = 170) {
+    if (!pinObj) return;
+
+    // Select this pin (reuse your existing selected class + focusedPin)
+    document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+    pinObj.pinElement.classList.add("selected");
+    pinManagment.focusedPin = pinObj;
+
+    // Zoom if below desired level; otherwise keep current zoom
+    const current = getCurrentZoomPercent();
+    const target = Math.max(current, desiredPercent);
+    setZoomPercent(target);
+
+    // Center after layout updates
+    requestAnimationFrame(() => centerOnPin(pinObj));
+    }
+    // ============================================================================ 
+
+
+
+    // -------------------- NEW: filter room list by search --------------------
+    const roomSearchInput = document.getElementById("room_search");
+
+    if (roomSearchInput) {
+    roomSearchInput.addEventListener("input", function () {
+        const term = this.value.trim().toLowerCase();
+
+        // show all if blank
+        if (!term) {
+        document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
+            btn.style.display = "block";
+        });
+        return;
+        }
+
+        // otherwise hide non-matching rooms
+        document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
+        const name = (btn.dataset.name || "").toLowerCase();
+        const label = btn.textContent.toLowerCase();
+        if (name.includes(term) || label.includes(term)) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+        });
+    });
+    }
+    // -------------------------------------------------------------------------
+
 
     document.addEventListener("click", (e) => {
     // Ignore clicks on pins
@@ -189,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pinObj.pinElement.style.left = (parseInt(pinObj.pinElement.style.left) * ratio) + "px";
             });
 
-            drawPaths();
+            //drawPaths();
         },
     };
 
@@ -216,7 +404,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     pinManagment.addEdges(pinObj.name, pinObj.edges);
                 })
 
-                drawPaths();
+                //drawPaths();
+
+                 // ------- NEW -------
+                updateRoomList();
+                // -------------------
             })
             .catch((error) => console.error("Error loading JSON file", error));
     }

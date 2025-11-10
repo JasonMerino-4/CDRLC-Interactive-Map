@@ -141,4 +141,41 @@ line {
     z-index: 1;
 }
 
+#left_nav_bar {
+  width: 300px;
+  background: #fff;
+  border: 1px solid #e5e8eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.find-room__title {
+  margin: 0 0 10px 0;
+  font-size: 20px;     
+  font-weight: 600;
+  color: #111827;
+}
+
+#room_search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f3f4f6;   
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;     
+}
+
+#room_search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #111827;
+}
+
+
+
+
 

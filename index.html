@@ -18,11 +18,11 @@
         <header id="cdrlc_header">
             <title>CDRLC Map</title>
             <div id="heading_container">
-                <h1 class="heading">CDLRC Interactive Map</h1>
+                <h1 class="heading">CDRLC Interactive Map</h1>
                 <h2 class="heading">Computer Design Research and Learning Center</h2>
             </div>
             <div id="address_container">
-                <p>850 West Taylor Street</p>
+                <p>850 W Taylor St</p>
                 <p>Chicago, IL 60607</p>
             </div>
         </header>
@@ -44,7 +44,24 @@
             </dl>
         </div>
         <div id="navbar_map_wrapper">
-            <div class="clean_box" id="left_nav_bar"></div>
+            <div class="clean_box" id="left_nav_bar">
+                <div id="find_room_block" class="find-room">
+                    <h3 class="find-room__title">Find a Room</h3>
+                    <input type="text" id="room_search" placeholder="Search by room number or name" />
+                </div>
+                <div id="amenity_filter" class="amenity-box">
+                <h3 class="mb-3">Quick Filters</h3>
+                <div class="amenity-grid">
+                    <button class="amenity-btn" data-type="Classroom">Classrooms</button>
+                    <button class="amenity-btn" data-type="Bathroom">Restrooms</button>
+                    <button class="amenity-btn" data-type="Study Room">Study Rooms</button>
+                    <button class="amenity-btn" data-type="Entrance">Entrances</button>
+                    <button class="amenity-btn" data-type="Stairs">Stairs</button>
+                    <button class="amenity-btn" data-type="Elevators">Elevators</button>
+                </div>
+                <button id="amenity_clear" class="amenity-clear" hidden>Clear Filter</button>
+                </div>
+            </div>
             <div class="clean_box" id="floorplan_legend_container">
                 <div id="map_title_wrapper">
                     <h3 id="map_title">Floor 1 plan</h3>
@@ -93,7 +110,7 @@
             </div>  
         </div>
         <footer>
-            <p>CS422 Programming and Design | Univeristy of Illinois Chicago</p>
+            <p>CS 422 UI Design and Programming | University of Illinois Chicago</p>
         </footer>
     </main>
 </body>
