@@ -160,27 +160,27 @@ h3 {
 }
 
 #classroom_legend_icon {
-    background-color: red;
+    background-color: #4CAF50;
 }
 
 #studyroom_legend_icon {
-    background-color: blue;
+    background-color: gray;
 }
 
 #restroom_legend_icon {
-    background-color: green;
+    background-color: #F44336;
 }
 
 #entrance_legend_icon {
-    background-color: orange;
+    background-color: #FF9800;
 }
 
 #stairs_legend_icon {
-    background-color: purple;
+    background-color: #9C27B0;
 }
 
 #elevator_legend_icon {
-    background-color: grey;
+    background-color: #795548;
 }
 
 .clean_box {

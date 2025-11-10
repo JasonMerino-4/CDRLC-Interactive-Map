@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    //Inputs
+    const zoomIn = document.getElementById("map_zoomin");
+    const zoomOut = document.getElementById("map_zoomout");
+    const zoomReset = document.getElementById("map_reset");
+
     //Map elements
     let mapWrapper = document.getElementById("map_wrapper");
     let mapPathsSVG = document.getElementById("map_paths");
@@ -74,9 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-
-
-
         getIntYPosition() {
             return parseInt(this.pinElement.style.top) || 0;
         }
@@ -110,18 +113,32 @@ document.addEventListener("DOMContentLoaded", function () {
         pinMap: new Map(),
         focusedPin: null,
 
+        clearMap: function(){
+            this.pinMap.forEach((pinObj, name) => {
+                this.removePin(pinObj);
+            })
+
+            clearMapPaths();
+        },
+
+        removeEdge: function (pin1, pin2){
+            if (pin1 != null && pin2 != null){
+                pin1.pinNeighbors.delete(pin2.pinName);
+                pin2.pinNeighbors.delete(pin1.pinName);
+            }
+        },
+
         removePin: function (pin) {
-            if (pin != null){
+            if (pin == null){
                 return;
             }
 
-            document.removeChild(pin.pinElement);
-            this.pinMap.delete(pin.pinName);
- 
-            pin.pinEdges.forEach((otherPin) => {
-                otherPin.delete(pin);
+            pin.pinNeighbors.forEach((otherPin) => {
+                this.removeEdge(pin, pinManagment.pinMap.get(otherPin));
             });
 
+            mapWrapper.removeChild(pin.pinElement);
+            this.pinMap.delete(pin.pinName);
         },
 
         addPin: function (name, type, floor, xPosition, yPosition){
@@ -177,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     function loadFloorData(){
+        console.log("once");
         const floorURLs = [
             ".\\Floordata\\floor1.json",
         ]
@@ -240,5 +258,43 @@ document.addEventListener("DOMContentLoaded", function () {
         mapPathsSVG.style.height = mapImage.offsetHeight + "px";
     }
 
+    function mapReset(){
+        pinManagment.clearMap();
+    }
+
     mapImage.addEventListener("load", fixImageSVG)
+
+    zoomIn.addEventListener("click", function(){
+        const zoomNumber = document.getElementById("map_zoom_number");
+        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
+        let newZoom = 1000 * ((parseInt(zoomNumber.textContent) + 10)/100);
+        console.log(currentZoom, newZoom, zoomNumber.textContent);
+        zoomNumber.textContent = (parseInt(zoomNumber.textContent) + 10).toString() + "%";
+
+        mapImage.style.width = newZoom.toString() + "px";
+        fixImageSVG();
+        pinManagment.scalePins(currentZoom, newZoom);
+    })
+
+    zoomOut.addEventListener("click", function(){
+        const zoomNumber = document.getElementById("map_zoom_number");
+        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
+        let newZoom = 1000 * ((parseInt(zoomNumber.textContent) - 10)/100);
+        console.log(currentZoom, newZoom, zoomNumber.textContent);
+        zoomNumber.textContent = (parseInt(zoomNumber.textContent) - 10).toString() + "%";
+
+        mapImage.style.width = newZoom.toString() + "px";
+        fixImageSVG();
+        pinManagment.scalePins(currentZoom, newZoom);
+    })
+
+    zoomReset.addEventListener("click", function(){
+        const zoomNumber = document.getElementById("map_zoom_number");
+        zoomNumber.textContent = "100%";
+
+        mapReset();
+        mapImage.style.width = "1000px";
+        fixImageSVG();
+        loadFloorData();
+    })
 })
