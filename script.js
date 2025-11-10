@@ -17,15 +17,65 @@ document.addEventListener("DOMContentLoaded", function () {
         createPinHTMLElement(xPosition, yPosition) {
             let newPinElement = document.createElement("div");
             newPinElement.classList.add("pin");
+            newPinElement.classList.add(this.pinType);
             newPinElement.style.left = xPosition;
             newPinElement.style.top = yPosition;
 
-            newPinElement.addEventListener("click", () => {
+            // Conditionally add icon
+            const iconSrc = this.getIconForType(this.pinType);
+            if (iconSrc) {
+                let icon = document.createElement("img");
+                icon.classList.add("pin-icon");
+                icon.src = iconSrc;
+                icon.alt = this.pinType;
+                newPinElement.appendChild(icon);
+            }
+
+            // Add label
+            let label = document.createElement("span");
+            label.classList.add("pin-label");
+            label.innerText = this.pinName;
+            newPinElement.appendChild(label);
+
+            // Click event for selection
+            newPinElement.addEventListener("click", (e) => {
+                e.stopPropagation();
+
+                // Remove "selected" from all pins
+                document.querySelectorAll(".pin.selected").forEach(pin => {
+                    pin.classList.remove("selected");
+                });
+
+                // Add "selected" to this pin
+                newPinElement.classList.add("selected");
+
                 pinManagment.focusedPin = this;
             });
-    
+
             return newPinElement;
         }
+
+
+
+        // choose icon image based on type
+        getIconForType(type) {
+            switch (type) {
+                case "Classroom": return "icons/classroom.svg";
+                case "Room": return "icons/room.svg";
+                case "Entrance": return "icons/entrance.svg";
+                case "Stairs": return "icons/stairs.svg";
+                case "Elevators": return "icons/elevator.svg";
+                case "Bathroom": return "icons/bathroom.svg";
+                case "Path":
+                case "Hallway":
+                    return null;
+                default:
+                    return "icons/default.svg";
+            }
+        }
+
+
+
 
         getIntYPosition() {
             return parseInt(this.pinElement.style.top) || 0;
@@ -45,6 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return xPos + (parseInt(this.pinElement.clientWidth)/2);
         }
     }
+
+    document.addEventListener("click", (e) => {
+    // Ignore clicks on pins
+    if (e.target.closest(".pin")) return;
+
+    // Remove "selected" from all pins
+    document.querySelectorAll(".pin.selected").forEach(pin => {
+        pin.classList.remove("selected");
+    });
+});
 
     const pinManagment = {
         pinMap: new Map(),
