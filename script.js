@@ -81,8 +81,18 @@ document.addEventListener("DOMContentLoaded", function () {
             return parseInt(this.pinElement.style.top) || 0;
         }
 
+        getIntYCenterPosition(){
+            let yPos = parseInt(this.pinElement.style.top) || 0;
+            return yPos + (parseInt(this.pinElement.clientHeight)/2);
+        }
+
         getIntXPosition() {
             return parseInt(this.pinElement.style.left) || 0;
+        }
+
+        getIntXCenterPosition(){
+            let xPos = parseInt(this.pinElement.style.left) || 0;
+            return xPos + (parseInt(this.pinElement.clientWidth)/2);
         }
     }
 
@@ -198,10 +208,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function addLine(pin1, pin2){
         let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line")
 
-        newLine.setAttribute("x1", pin1.getIntXPosition());
-        newLine.setAttribute("y1", pin1.getIntYPosition());
-        newLine.setAttribute("x2", pin2.getIntXPosition());
-        newLine.setAttribute("y2", pin2.getIntYPosition());
+        newLine.setAttribute("x1", pin1.getIntXCenterPosition());
+        newLine.setAttribute("y1", pin1.getIntYCenterPosition());
+        newLine.setAttribute("x2", pin2.getIntXCenterPosition());
+        newLine.setAttribute("y2", pin2.getIntYCenterPosition());
         newLine.setAttribute("stroke", "black");
 
         mapPathsSVG.appendChild(newLine);
@@ -232,5 +242,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     mapImage.addEventListener("load", fixImageSVG)
 })
-
-

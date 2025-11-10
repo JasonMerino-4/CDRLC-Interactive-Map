@@ -1,0 +1,1131 @@
+[
+  {
+    "name": "11000",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "126px",
+    "yPosition": "105px",
+    "edges": [
+      "4461",
+      "4462",
+      "4S1",
+      "11001"
+    ]
+  },
+  {
+    "name": "11001",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "134px",
+    "yPosition": "152px",
+    "edges": [
+      "11000",
+      "4460",
+      "4457",
+      "11002"
+    ]
+  },
+  {
+    "name": "11002",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "143px",
+    "yPosition": "199px",
+    "edges": [
+      "11001",
+      "4458",
+      "11003"
+    ]
+  },
+  {
+    "name": "11003",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "151px",
+    "yPosition": "244px",
+    "edges": [
+      "11002",
+      "4455",
+      "4456",
+      "11004"
+    ]
+  },
+  {
+    "name": "11004",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "161px",
+    "yPosition": "296px",
+    "edges": [
+      "11003",
+      "4454",
+      "4453",
+      "11005"
+    ]
+  },
+  {
+    "name": "11005",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "167px",
+    "yPosition": "342px",
+    "edges": [
+      "11004",
+      "4452",
+      "11006"
+    ]
+  },
+  {
+    "name": "11006",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "175px",
+    "yPosition": "381px",
+    "edges": [
+      "11005",
+      "4450",
+      "4451",
+      "4480"
+    ]
+  },
+  {
+    "name": "11007",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "191px",
+    "yPosition": "482px",
+    "edges": [
+      "4480",
+      "4446",
+      "11008"
+    ]
+  },
+  {
+    "name": "11008",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "198.5px",
+    "yPosition": "525.5px",
+    "edges": [
+      "11007",
+      "4444",
+      "11009"
+    ]
+  },
+  {
+    "name": "11009",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "206.5px",
+    "yPosition": "576.5px",
+    "edges": [
+      "11008",
+      "11009",
+      "4442",
+      "4447",
+      "4440"
+    ]
+  },
+  {
+    "name": "11010",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "210.5px",
+    "yPosition": "696.5px",
+    "edges": [
+      "4440",
+      "4438",
+      "4443",
+      "11011"
+    ]
+  },
+  {
+    "name": "11011",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "207.5px",
+    "yPosition": "739.5px",
+    "edges": [
+      "4436",
+      "11010",
+      "11012"
+    ]
+  },
+  {
+    "name": "11012",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "204.5px",
+    "yPosition": "783.5px",
+    "edges": [
+      "4434",
+      "11013",
+      "4441",
+      "11011"
+    ]
+  },
+  {
+    "name": "11013",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "195.5px",
+    "yPosition": "840.5px",
+    "edges": [
+      "11012",
+      "4432",
+      "11014",
+      "4439"
+    ]
+  },
+  {
+    "name": "11014",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "185.5px",
+    "yPosition": "894.5px",
+    "edges": [
+      "11013",
+      "4430",
+      "11015"
+    ]
+  },
+  {
+    "name": "11015",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "267.5px",
+    "yPosition": "936.5px",
+    "edges": [
+      "11014",
+      "11016"
+    ]
+  },
+  {
+    "name": "11016",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "240.5px",
+    "yPosition": "1024.5px",
+    "edges": [
+      "11015",
+      "11018",
+      "11017",
+      "4400"
+    ]
+  },
+  {
+    "name": "11017",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "161.5px",
+    "yPosition": "1105.5px",
+    "edges": [
+      "11016",
+      "4400",
+      "4426",
+      "11019"
+    ]
+  },
+  {
+    "name": "11018",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "241.5px",
+    "yPosition": "1111.5px",
+    "edges": [
+      "11016",
+      "4400",
+      "4422"
+    ]
+  },
+  {
+    "name": "11019",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "161.5px",
+    "yPosition": "1196.5px",
+    "edges": [
+      "11017",
+      "11020",
+      "4424"
+    ]
+  },
+  {
+    "name": "11020",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "161.5px",
+    "yPosition": "1260.5px",
+    "edges": [
+      "11019",
+      "11021",
+      "4433",
+      "11022"
+    ]
+  },
+  {
+    "name": "11021",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "126.5px",
+    "yPosition": "1261.5px",
+    "edges": [
+      "11020",
+      "4437"
+    ]
+  },
+  {
+    "name": "11022",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "232.5px",
+    "yPosition": "1262.5px",
+    "edges": [
+      "4431",
+      "11023",
+      "4422",
+      "11020"
+    ]
+  },
+  {
+    "name": "11023",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "274.5px",
+    "yPosition": "1263.5px",
+    "edges": [
+      "11022",
+      "4429",
+      "11024"
+    ]
+  },
+  {
+    "name": "11024",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "324.5px",
+    "yPosition": "1263.5px",
+    "edges": [
+      "11023",
+      "4427",
+      "11025"
+    ]
+  },
+  {
+    "name": "11025",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "372.5px",
+    "yPosition": "1262.5px",
+    "edges": [
+      "11024",
+      "4425",
+      "11026",
+      "4418"
+    ]
+  },
+  {
+    "name": "11026",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "422.5px",
+    "yPosition": "1261.5px",
+    "edges": [
+      "11025",
+      "4423",
+      "4401"
+    ]
+  },
+  {
+    "name": "11027",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "518.5px",
+    "yPosition": "1263.5px",
+    "edges": [
+      "4401",
+      "4419",
+      "11028"
+    ]
+  },
+  {
+    "name": "11028",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "560.5px",
+    "yPosition": "1261.5px",
+    "edges": [
+      "11027",
+      "4417",
+      "4416",
+      "11029"
+    ]
+  },
+  {
+    "name": "11029",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "609.5px",
+    "yPosition": "1262.5px",
+    "edges": [
+      "11028",
+      "4415",
+      "4412",
+      "11030"
+    ]
+  },
+  {
+    "name": "11030",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "671.5px",
+    "yPosition": "1264.5px",
+    "edges": [
+      "11029",
+      "4413",
+      "11031"
+    ]
+  },
+  {
+    "name": "11031",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "731.5px",
+    "yPosition": "1267.5px",
+    "edges": [
+      "11030",
+      "4411",
+      "4408",
+      "11032"
+    ]
+  },
+  {
+    "name": "11032",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "774.5px",
+    "yPosition": "1281.5px",
+    "edges": [
+      "11031",
+      "4409",
+      "11033"
+    ]
+  },
+  {
+    "name": "11033",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "832.5px",
+    "yPosition": "1297.5px",
+    "edges": [
+      "11032",
+      "4407",
+      "11034",
+      "4406"
+    ]
+  },
+  {
+    "name": "11034",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "867.5px",
+    "yPosition": "1308.5px",
+    "edges": [
+      "11033",
+      "4405",
+      "11035",
+      "4402"
+    ]
+  },
+  {
+    "name": "11035",
+    "type": "Path",
+    "floor": "4",
+    "xPosition": "917.5px",
+    "yPosition": "1326.5px",
+    "edges": [
+      "11034",
+      "4403",
+      "4402"
+    ]
+  },
+  {
+    "name": "4422",
+    "type": "Bathroom",
+    "floor": "4",
+    "xPosition": "267.5px",
+    "yPosition": "1179.5px",
+    "edges": [
+      "11022",
+      "11018"
+    ]
+  },
+  {
+    "name": "E1",
+    "type": "Elevators",
+    "floor": "4",
+    "xPosition": "205.5px",
+    "yPosition": "969.5px",
+    "edges": [
+      "4400"
+    ]
+  },
+  {
+    "name": "E2",
+    "type": "Elevators",
+    "floor": "4",
+    "xPosition": "162.5px",
+    "yPosition": "957.5px",
+    "edges": [
+      "4400"
+    ]
+  },
+  {
+    "name": "4S1",
+    "type": "Stairs",
+    "floor": "4",
+    "xPosition": "169.5px",
+    "yPosition": "94.5px",
+    "edges": [
+      "11000"
+    ]
+  },
+  {
+    "name": "4S2",
+    "type": "Stairs",
+    "floor": "4",
+    "xPosition": "875.5px",
+    "yPosition": "1215.5px",
+    "edges": [
+      "4402"
+    ]
+  },
+  {
+    "name": "4S7",
+    "type": "Stairs",
+    "floor": "4",
+    "xPosition": "127.5px",
+    "yPosition": "1029.5px",
+    "edges": [
+      "4400"
+    ]
+  },
+  {
+    "name": "4461",
+    "type": "Room",
+    "floor": "4",
+    "xPosition": "135.5px",
+    "yPosition": "45.5px",
+    "edges": [
+      "4464",
+      "11000"
+    ]
+  },
+  {
+    "name": "4437",
+    "type": "Room",
+    "floor": "4",
+    "xPosition": "94.5px",
+    "yPosition": "1300.5px",
+    "edges": [
+      "11021"
+    ]
+  },
+  {
+    "name": "4402",
+    "type": "Room",
+    "floor": "4",
+    "xPosition": "903.5px",
+    "yPosition": "1276.5px",
+    "edges": [
+      "11034",
+      "11035",
+      "4S2"
+    ]
+  },
+  {
+    "name": "4480",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "183.5px",
+    "yPosition": "430.5px",
+    "edges": [
+      "11006",
+      "4448",
+      "11007",
+      "4449"
+    ]
+  },
+  {
+    "name": "4440",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "160.5px",
+    "yPosition": "642.5px",
+    "edges": [
+      "11009",
+      "4500",
+      "11010"
+    ]
+  },
+  {
+    "name": "4500",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "348.5px",
+    "yPosition": "640.5px",
+    "edges": [
+      "4440",
+      "4445",
+      "4202B"
+    ]
+  },
+  {
+    "name": "4202B",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "457.5px",
+    "yPosition": "722.5px",
+    "edges": [
+      "4500"
+    ]
+  },
+  {
+    "name": "4400",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "193.5px",
+    "yPosition": "1017.5px",
+    "edges": [
+      "11016",
+      "E2",
+      "E1",
+      "4S7",
+      "11017",
+      "11018"
+    ]
+  },
+  {
+    "name": "4401",
+    "type": "Hallway",
+    "floor": "4",
+    "xPosition": "477.5px",
+    "yPosition": "1256.5px",
+    "edges": [
+      "11026",
+      "4421",
+      "11027"
+    ]
+  },
+  {
+    "name": "4464",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "70.5px",
+    "yPosition": "60.5px",
+    "edges": [
+      "4461"
+    ]
+  },
+  {
+    "name": "4462",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "77.5px",
+    "yPosition": "108.5px",
+    "edges": [
+      "11000"
+    ]
+  },
+  {
+    "name": "4460",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "86.5px",
+    "yPosition": "155.5px",
+    "edges": [
+      "11001"
+    ]
+  },
+  {
+    "name": "4458",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "94.5px",
+    "yPosition": "204.5px",
+    "edges": [
+      "11002"
+    ]
+  },
+  {
+    "name": "4456",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "103.5px",
+    "yPosition": "253.5px",
+    "edges": [
+      "11003"
+    ]
+  },
+  {
+    "name": "4454",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "110.5px",
+    "yPosition": "300.5px",
+    "edges": [
+      "11004"
+    ]
+  },
+  {
+    "name": "4452",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "117.5px",
+    "yPosition": "348.5px",
+    "edges": [
+      "11005"
+    ]
+  },
+  {
+    "name": "4450",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "127.5px",
+    "yPosition": "396.5px",
+    "edges": [
+      "11006"
+    ]
+  },
+  {
+    "name": "4448",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "135.5px",
+    "yPosition": "443.5px",
+    "edges": [
+      "4480"
+    ]
+  },
+  {
+    "name": "4446",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "143.5px",
+    "yPosition": "491.5px",
+    "edges": [
+      "11007"
+    ]
+  },
+  {
+    "name": "4444",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "151.5px",
+    "yPosition": "539.5px",
+    "edges": [
+      "11008"
+    ]
+  },
+  {
+    "name": "4442",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "157.5px",
+    "yPosition": "587.5px",
+    "edges": [
+      "11009"
+    ]
+  },
+  {
+    "name": "4447",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "247.5px",
+    "yPosition": "582.5px",
+    "edges": [
+      "11009"
+    ]
+  },
+  {
+    "name": "4445",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "311.5px",
+    "yPosition": "577.5px",
+    "edges": [
+      "4500"
+    ]
+  },
+  {
+    "name": "4443",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "260.5px",
+    "yPosition": "711.5px",
+    "edges": [
+      "11010"
+    ]
+  },
+  {
+    "name": "4438",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "160.5px",
+    "yPosition": "697.5px",
+    "edges": [
+      "11010"
+    ]
+  },
+  {
+    "name": "4436",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "157.5px",
+    "yPosition": "743.5px",
+    "edges": [
+      "11011"
+    ]
+  },
+  {
+    "name": "4434",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "153.5px",
+    "yPosition": "792.5px",
+    "edges": [
+      "11012"
+    ]
+  },
+  {
+    "name": "4432",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "144.5px",
+    "yPosition": "843.5px",
+    "edges": [
+      "11013"
+    ]
+  },
+  {
+    "name": "4430",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "133.5px",
+    "yPosition": "892.5px",
+    "edges": [
+      "11014"
+    ]
+  },
+  {
+    "name": "4439",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "237.5px",
+    "yPosition": "860.5px",
+    "edges": [
+      "11013"
+    ]
+  },
+  {
+    "name": "4433",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "163.5px",
+    "yPosition": "1301.5px",
+    "edges": [
+      "11020"
+    ]
+  },
+  {
+    "name": "4431",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "212.5px",
+    "yPosition": "1303.5px",
+    "edges": [
+      "11022"
+    ]
+  },
+  {
+    "name": "4429",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "259.5px",
+    "yPosition": "1302.5px",
+    "edges": [
+      "11023"
+    ]
+  },
+  {
+    "name": "4427",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "308.5px",
+    "yPosition": "1303.5px",
+    "edges": [
+      "11024"
+    ]
+  },
+  {
+    "name": "4425",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "357.5px",
+    "yPosition": "1302.5px",
+    "edges": [
+      "11025"
+    ]
+  },
+  {
+    "name": "4423",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "405.5px",
+    "yPosition": "1301.5px",
+    "edges": [
+      "11026"
+    ]
+  },
+  {
+    "name": "4421",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "455.5px",
+    "yPosition": "1300.5px",
+    "edges": [
+      "4401"
+    ]
+  },
+  {
+    "name": "4424",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "199.5px",
+    "yPosition": "1214.5px",
+    "edges": [
+      "11019"
+    ]
+  },
+  {
+    "name": "4420",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "386.5px",
+    "yPosition": "1148.5px",
+    "edges": [
+      "4416"
+    ]
+  },
+  {
+    "name": "4418",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "387.5px",
+    "yPosition": "1212.5px",
+    "edges": [
+      "11025"
+    ]
+  },
+  {
+    "name": "4419",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "501.5px",
+    "yPosition": "1301.5px",
+    "edges": [
+      "11027"
+    ]
+  },
+  {
+    "name": "4417",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "553.5px",
+    "yPosition": "1300.5px",
+    "edges": [
+      "11028"
+    ]
+  },
+  {
+    "name": "4415",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "601.5px",
+    "yPosition": "1301.5px",
+    "edges": [
+      "11029"
+    ]
+  },
+  {
+    "name": "4413",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "650.5px",
+    "yPosition": "1304.5px",
+    "edges": [
+      "11030"
+    ]
+  },
+  {
+    "name": "4411",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "701.5px",
+    "yPosition": "1312.5px",
+    "edges": [
+      "11031"
+    ]
+  },
+  {
+    "name": "4409",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "750.5px",
+    "yPosition": "1318.5px",
+    "edges": [
+      "11032"
+    ]
+  },
+  {
+    "name": "4407",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "798.5px",
+    "yPosition": "1330.5px",
+    "edges": [
+      "11033"
+    ]
+  },
+  {
+    "name": "4405",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "844.5px",
+    "yPosition": "1344.5px",
+    "edges": [
+      "11034"
+    ]
+  },
+  {
+    "name": "4403",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "889.5px",
+    "yPosition": "1359.5px",
+    "edges": [
+      "11035"
+    ]
+  },
+  {
+    "name": "4406",
+    "type": "Study Room",
+    "floor": "4",
+    "xPosition": "835.5px",
+    "yPosition": "1265.5px",
+    "edges": [
+      "11033"
+    ]
+  },
+  {
+    "name": "4408",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "784.5px",
+    "yPosition": "1177.5px",
+    "edges": [
+      "11031"
+    ]
+  },
+  {
+    "name": "4412",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "646.5px",
+    "yPosition": "1179.5px",
+    "edges": [
+      "11029"
+    ]
+  },
+  {
+    "name": "4416",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "492.5px",
+    "yPosition": "1177.5px",
+    "edges": [
+      "11028",
+      "4420"
+    ]
+  },
+  {
+    "name": "4426",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "78.5px",
+    "yPosition": "1182.5px",
+    "edges": [
+      "11017"
+    ]
+  },
+  {
+    "name": "4441",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "255.5px",
+    "yPosition": "780.5px",
+    "edges": [
+      "11012"
+    ]
+  },
+  {
+    "name": "4449",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "266.5px",
+    "yPosition": "478.5px",
+    "edges": [
+      "4480"
+    ]
+  },
+  {
+    "name": "4451",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "251.5px",
+    "yPosition": "366.5px",
+    "edges": [
+      "11006"
+    ]
+  },
+  {
+    "name": "4453",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "235.5px",
+    "yPosition": "294.5px",
+    "edges": [
+      "11004"
+    ]
+  },
+  {
+    "name": "4455",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "222.5px",
+    "yPosition": "222.5px",
+    "edges": [
+      "11003"
+    ]
+  },
+  {
+    "name": "4457",
+    "type": "Classroom",
+    "floor": "4",
+    "xPosition": "211.5px",
+    "yPosition": "153.5px",
+    "edges": [
+      "11001"
+    ]
+  }
+]
