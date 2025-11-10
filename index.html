@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./mapstyle.css">
     <script src="./script.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,0,0" />
+
 </head>
 
 <body>
@@ -16,12 +18,16 @@
         <header id="cdrlc_header">
             <title>CDRLC Map</title>
             <div id="heading_container">
-                <h1>CDLRC Interactive Map</h1>
-                <h2>Computer Design Research and Learning Center</h2>
+                <h1 class="heading">CDLRC Interactive Map</h1>
+                <h2 class="heading">Computer Design Research and Learning Center</h2>
+            </div>
+            <div id="address_container">
+                <p>850 West Taylor Street</p>
+                <p>Chicago, IL 60607</p>
             </div>
         </header>
         <div id="instructions_wrapper">
-            <h3>How to Use CDLRC Map</h3>
+            <h3>How to Use the CDLRC Map</h3>
             <dl id="instruction_list">
                 <div class="instruction_item">
                     <dt>Search & Filter</dt>
@@ -38,18 +44,57 @@
             </dl>
         </div>
         <div id="navbar_map_wrapper">
-            <div id="left_nav_bar"></div>
-            <div id="floorplan_legend_container">
+            <div class="clean_box" id="left_nav_bar"></div>
+            <div class="clean_box" id="floorplan_legend_container">
+                <div id="map_title_wrapper">
+                    <h3 id="map_title">Floor 1 plan</h3>
+                    <div id="map_zoom_wrapper">
+                        <button class="material-symbols-outlined" id="map_zoomin">zoom_in</button>
+                        <p id="map_zoom_number">100%</p>
+                        <button class="material-symbols-outlined" id="map_zoomout">zoom_out</button>
+                        <button class="material-symbols-outlined" id="map_reset">pan_zoom</button>
+                    </div>
+                </div>
                 <div id="map_wrapper">
                     <svg id="map_paths">
                         <line x1="368" y1="185" x2="373" y2="310" stroke="black">
                     </svg>
-        
                     <img id="map_floorplan" src="Floorplans/floor1.svg">
                 </div>
-                <div id="map_legend"></div>
+                <div id="map_legend_container">
+                    <h4>Legend</h4>
+                    <dl id="map_legend">
+                        <div class="legend_item">
+                            <div id="classroom_legend_icon" class="legend_icon"></div>
+                            <dt>Classroom</dt>
+                        </div>
+                        <div class="legend_item">
+                            <div id="studyroom_legend_icon" class="legend_icon"></div>
+                            <dt>Studyroom</dt>
+                        </div>
+                        <div class="legend_item">
+                            <div id="restroom_legend_icon" class="legend_icon"></div>
+                            <dt>Restroom</dt>
+                        </div>
+                        <div class="legend_item">
+                            <div id="entrance_legend_icon" class="legend_icon"></div>
+                            <dt>Entrance</dt>
+                        </div>
+                        <div class="legend_item">
+                            <div id="stairs_legend_icon" class="legend_icon"></div>
+                            <dt>Stairs</dt>
+                        </div>
+                        <div class="legend_item">
+                            <div id="elevator_legend_icon" class="legend_icon"></div>
+                            <dt>Elevator</dt>
+                        </div>
+                    </dl>
+                </div>
             </div>  
         </div>
+        <footer>
+            <p>CS422 Programming and Design | Univeristy of Illinois Chicago</p>
+        </footer>
     </main>
 </body>
 
