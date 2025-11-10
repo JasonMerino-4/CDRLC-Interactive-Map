@@ -1,0 +1,1109 @@
+[
+  {
+    "name": "2S3",
+    "type": "Stairs",
+    "floor": "2",
+    "xPosition": "591px",
+    "yPosition": "1060px",
+    "edges": [
+      "11002"
+    ]
+  },
+  {
+    "name": "11002",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "460px",
+    "yPosition": "1060px",
+    "edges": [
+      "11006",
+      "2S3",
+      "11026",
+      "11056"
+    ]
+  },
+  {
+    "name": "11006",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "460px",
+    "yPosition": "1170px",
+    "edges": [
+      "11002",
+      "11026",
+      "11027",
+      "2410"
+    ]
+  },
+  {
+    "name": "11008",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "500px",
+    "yPosition": "1240px",
+    "edges": [
+      "11011",
+      "2406B",
+      "11012"
+    ]
+  },
+  {
+    "name": "11010",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "430px",
+    "yPosition": "1240px",
+    "edges": [
+      "11028",
+      "2409",
+      "11018"
+    ]
+  },
+  {
+    "name": "11011",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "470px",
+    "yPosition": "1240px",
+    "edges": [
+      "11028",
+      "2407",
+      "11008"
+    ]
+  },
+  {
+    "name": "11012",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "710px",
+    "yPosition": "1250px",
+    "edges": [
+      "11008",
+      "2405",
+      "2406A",
+      "11013"
+    ]
+  },
+  {
+    "name": "11013",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "750px",
+    "yPosition": "1240px",
+    "edges": [
+      "11012",
+      "11014",
+      "2402",
+      "11015"
+    ]
+  },
+  {
+    "name": "11014",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "750px",
+    "yPosition": "1390px",
+    "edges": [
+      "11013",
+      "2403"
+    ]
+  },
+  {
+    "name": "11015",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "740px",
+    "yPosition": "1200px",
+    "edges": [
+      "11013",
+      "11016",
+      "2404"
+    ]
+  },
+  {
+    "name": "11016",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "770px",
+    "yPosition": "1190px",
+    "edges": [
+      "11015",
+      "11017"
+    ]
+  },
+  {
+    "name": "11017",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "840px",
+    "yPosition": "1190px",
+    "edges": [
+      "11016",
+      "2S2"
+    ]
+  },
+  {
+    "name": "11018",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "1240px",
+    "edges": [
+      "11010",
+      "11019",
+      "2416"
+    ]
+  },
+  {
+    "name": "11019",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "1240px",
+    "edges": [
+      "11018",
+      "11020",
+      "2411",
+      "11059"
+    ]
+  },
+  {
+    "name": "11020",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "1180px",
+    "edges": [
+      "11019",
+      "2418",
+      "11021"
+    ]
+  },
+  {
+    "name": "11021",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "1120px",
+    "edges": [
+      "11020",
+      "11022"
+    ]
+  },
+  {
+    "name": "11022",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "1090px",
+    "edges": [
+      "11021",
+      "11023",
+      "11060"
+    ]
+  },
+  {
+    "name": "11023",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "1060px",
+    "edges": [
+      "11022",
+      "2S7",
+      "11024",
+      "11053",
+      "11052",
+      "11065"
+    ]
+  },
+  {
+    "name": "11024",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "1050px",
+    "edges": [
+      "11023",
+      "11056",
+      "11054",
+      "11065"
+    ]
+  },
+  {
+    "name": "11025",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "290px",
+    "yPosition": "960px",
+    "edges": [
+      "11054",
+      "11029"
+    ]
+  },
+  {
+    "name": "11026",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "460px",
+    "yPosition": "1090px",
+    "edges": [
+      "11002",
+      "11006",
+      "2412"
+    ]
+  },
+  {
+    "name": "11027",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "450px",
+    "yPosition": "1200px",
+    "edges": [
+      "11006",
+      "11028",
+      "2408"
+    ]
+  },
+  {
+    "name": "11028",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "450px",
+    "yPosition": "1240px",
+    "edges": [
+      "11027",
+      "11011",
+      "11010"
+    ]
+  },
+  {
+    "name": "11029",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "310px",
+    "yPosition": "870px",
+    "edges": [
+      "11025",
+      "11030"
+    ]
+  },
+  {
+    "name": "11030",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "320px",
+    "yPosition": "790px",
+    "edges": [
+      "11029",
+      "11031"
+    ]
+  },
+  {
+    "name": "11031",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "330px",
+    "yPosition": "700px",
+    "edges": [
+      "11030",
+      "11032"
+    ]
+  },
+  {
+    "name": "11032",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "370px",
+    "yPosition": "660px",
+    "edges": [
+      "11031",
+      "2423",
+      "11033"
+    ]
+  },
+  {
+    "name": "11033",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "250px",
+    "yPosition": "660px",
+    "edges": [
+      "11032",
+      "11034"
+    ]
+  },
+  {
+    "name": "11034",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "640px",
+    "edges": [
+      "11033",
+      "11035"
+    ]
+  },
+  {
+    "name": "11035",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "600px",
+    "edges": [
+      "11034",
+      "2425",
+      "11036"
+    ]
+  },
+  {
+    "name": "11036",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "550px",
+    "edges": [
+      "11035",
+      "2427",
+      "2422",
+      "11037"
+    ]
+  },
+  {
+    "name": "11037",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "220px",
+    "yPosition": "520px",
+    "edges": [
+      "11036",
+      "2424",
+      "11038"
+    ]
+  },
+  {
+    "name": "11038",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "480px",
+    "edges": [
+      "11037",
+      "2426",
+      "11039"
+    ]
+  },
+  {
+    "name": "11039",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "190px",
+    "yPosition": "440px",
+    "edges": [
+      "11038",
+      "2428",
+      "11040"
+    ]
+  },
+  {
+    "name": "11040",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "180px",
+    "yPosition": "390px",
+    "edges": [
+      "11039",
+      "2430",
+      "11041"
+    ]
+  },
+  {
+    "name": "11041",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "180px",
+    "yPosition": "350px",
+    "edges": [
+      "11040",
+      "2432",
+      "11042",
+      "11064"
+    ]
+  },
+  {
+    "name": "11042",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "170px",
+    "yPosition": "300px",
+    "edges": [
+      "11041",
+      "2434",
+      "11043",
+      "11048"
+    ]
+  },
+  {
+    "name": "11043",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "260px",
+    "edges": [
+      "11042",
+      "2436",
+      "11044"
+    ]
+  },
+  {
+    "name": "11044",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "210px",
+    "edges": [
+      "11043",
+      "2438",
+      "11045"
+    ]
+  },
+  {
+    "name": "11045",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "150px",
+    "yPosition": "170px",
+    "edges": [
+      "11044",
+      "2440",
+      "11051",
+      "11046"
+    ]
+  },
+  {
+    "name": "11046",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "140px",
+    "yPosition": "120px",
+    "edges": [
+      "11045",
+      "11047"
+    ]
+  },
+  {
+    "name": "11047",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "110px",
+    "edges": [
+      "11046",
+      "2442"
+    ]
+  },
+  {
+    "name": "11048",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "210px",
+    "yPosition": "280px",
+    "edges": [
+      "11042",
+      "2439"
+    ]
+  },
+  {
+    "name": "11049",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "250px",
+    "yPosition": "290px",
+    "edges": [
+      "11050",
+      "2437"
+    ]
+  },
+  {
+    "name": "11050",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "250px",
+    "yPosition": "310px",
+    "edges": [
+      "11064",
+      "11049",
+      "2433"
+    ]
+  },
+  {
+    "name": "11051",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "210px",
+    "yPosition": "160px",
+    "edges": [
+      "11045",
+      "2S1"
+    ]
+  },
+  {
+    "name": "11052",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "1000px",
+    "edges": [
+      "11054",
+      "11053",
+      "Elevator1",
+      "11023",
+      "11065"
+    ]
+  },
+  {
+    "name": "11053",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "180px",
+    "yPosition": "990px",
+    "edges": [
+      "11052",
+      "11055",
+      "Elevator2",
+      "11023"
+    ]
+  },
+  {
+    "name": "11054",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "1000px",
+    "edges": [
+      "11024",
+      "11052",
+      "11025",
+      "11065"
+    ]
+  },
+  {
+    "name": "11055",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "150px",
+    "yPosition": "980px",
+    "edges": [
+      "11053"
+    ]
+  },
+  {
+    "name": "2440",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "120px",
+    "yPosition": "170px",
+    "edges": [
+      "11045"
+    ]
+  },
+  {
+    "name": "2438",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "130px",
+    "yPosition": "220px",
+    "edges": [
+      "11044"
+    ]
+  },
+  {
+    "name": "2436",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "130px",
+    "yPosition": "260px",
+    "edges": [
+      "11043"
+    ]
+  },
+  {
+    "name": "2434",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "140px",
+    "yPosition": "300px",
+    "edges": [
+      "11042"
+    ]
+  },
+  {
+    "name": "2432",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "150px",
+    "yPosition": "350px",
+    "edges": [
+      "11041"
+    ]
+  },
+  {
+    "name": "2430",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "400px",
+    "edges": [
+      "11040"
+    ]
+  },
+  {
+    "name": "2428",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "440px",
+    "edges": [
+      "11039"
+    ]
+  },
+  {
+    "name": "2426",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "170px",
+    "yPosition": "480px",
+    "edges": [
+      "11038"
+    ]
+  },
+  {
+    "name": "2424",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "190px",
+    "yPosition": "530px",
+    "edges": [
+      "11037"
+    ]
+  },
+  {
+    "name": "2429",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "210px",
+    "yPosition": "380px",
+    "edges": [
+      "11064"
+    ]
+  },
+  {
+    "name": "2439",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "250px",
+    "edges": [
+      "11048"
+    ]
+  },
+  {
+    "name": "2442",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "170px",
+    "yPosition": "130px",
+    "edges": [
+      "11047"
+    ]
+  },
+  {
+    "name": "2427",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "550px",
+    "edges": [
+      "11036"
+    ]
+  },
+  {
+    "name": "2422",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "190px",
+    "yPosition": "560px",
+    "edges": [
+      "11036"
+    ]
+  },
+  {
+    "name": "2425",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "590px",
+    "edges": [
+      "11035"
+    ]
+  },
+  {
+    "name": "2423",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "360px",
+    "yPosition": "610px",
+    "edges": [
+      "11032"
+    ]
+  },
+  {
+    "name": "Elevator1",
+    "type": "Elevators",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "960px",
+    "edges": [
+      "11052"
+    ]
+  },
+  {
+    "name": "Elevator2",
+    "type": "Elevators",
+    "floor": "2",
+    "xPosition": "190px",
+    "yPosition": "950px",
+    "edges": [
+      "11053"
+    ]
+  },
+  {
+    "name": "11056",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "310px",
+    "yPosition": "1060px",
+    "edges": [
+      "11024",
+      "11057",
+      "11002"
+    ]
+  },
+  {
+    "name": "11057",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "300px",
+    "yPosition": "1090px",
+    "edges": [
+      "11056",
+      "11058",
+      "2414"
+    ]
+  },
+  {
+    "name": "11058",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "1100px",
+    "edges": [
+      "11057",
+      "2416"
+    ]
+  },
+  {
+    "name": "2413",
+    "type": "Study Room",
+    "floor": "2",
+    "xPosition": "100px",
+    "yPosition": "1270px",
+    "edges": [
+      "11062",
+      "11059",
+      "2S4"
+    ]
+  },
+  {
+    "name": "2S4",
+    "type": "Stairs",
+    "floor": "2",
+    "xPosition": "150px",
+    "yPosition": "1320px",
+    "edges": [
+      "11059",
+      "2413"
+    ]
+  },
+  {
+    "name": "2411",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "190px",
+    "yPosition": "1280px",
+    "edges": [
+      "11019"
+    ]
+  },
+  {
+    "name": "2409",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "430px",
+    "yPosition": "1280px",
+    "edges": [
+      "11010"
+    ]
+  },
+  {
+    "name": "2407",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "470px",
+    "yPosition": "1280px",
+    "edges": [
+      "11011"
+    ]
+  },
+  {
+    "name": "2405",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "710px",
+    "yPosition": "1280px",
+    "edges": [
+      "11012"
+    ]
+  },
+  {
+    "name": "2406A",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "710px",
+    "yPosition": "1200px",
+    "edges": [
+      "11012"
+    ]
+  },
+  {
+    "name": "2406B",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "490px",
+    "yPosition": "1200px",
+    "edges": [
+      "11008"
+    ]
+  },
+  {
+    "name": "2402",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "780px",
+    "yPosition": "1240px",
+    "edges": [
+      "11013"
+    ]
+  },
+  {
+    "name": "2403",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "770px",
+    "yPosition": "1400px",
+    "edges": [
+      "11014"
+    ]
+  },
+  {
+    "name": "2S2",
+    "type": "Stairs",
+    "floor": "2",
+    "xPosition": "870px",
+    "yPosition": "1190px",
+    "edges": [
+      "11017"
+    ]
+  },
+  {
+    "name": "2416",
+    "type": "Bathroom",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "1160px",
+    "edges": [
+      "11058",
+      "11018"
+    ]
+  },
+  {
+    "name": "2410",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "431px",
+    "yPosition": "1172px",
+    "edges": [
+      "11006"
+    ]
+  },
+  {
+    "name": "2S7",
+    "type": "Stairs",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "1050px",
+    "edges": [
+      "11023"
+    ]
+  },
+  {
+    "name": "11059",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "160px",
+    "yPosition": "1240px",
+    "edges": [
+      "2413",
+      "2S4",
+      "11019"
+    ]
+  },
+  {
+    "name": "11060",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "150px",
+    "yPosition": "1090px",
+    "edges": [
+      "11022",
+      "11061"
+    ]
+  },
+  {
+    "name": "11061",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "110px",
+    "yPosition": "1090px",
+    "edges": [
+      "11060",
+      "11062"
+    ]
+  },
+  {
+    "name": "11062",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "70px",
+    "yPosition": "1220px",
+    "edges": [
+      "11061",
+      "2413"
+    ]
+  },
+  {
+    "name": "2418",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "230px",
+    "yPosition": "1180px",
+    "edges": [
+      "11020"
+    ]
+  },
+  {
+    "name": "2414",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "340px",
+    "yPosition": "1090px",
+    "edges": [
+      "11057"
+    ]
+  },
+  {
+    "name": "2412",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "420px",
+    "yPosition": "1090px",
+    "edges": [
+      "11026"
+    ]
+  },
+  {
+    "name": "2437",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "270px",
+    "yPosition": "280px",
+    "edges": [
+      "11049"
+    ]
+  },
+  {
+    "name": "2433",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "280px",
+    "yPosition": "310px",
+    "edges": [
+      "11050"
+    ]
+  },
+  {
+    "name": "2S1",
+    "type": "Stairs",
+    "floor": "2",
+    "xPosition": "210px",
+    "yPosition": "140px",
+    "edges": [
+      "11051"
+    ]
+  },
+  {
+    "name": "11064",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "200px",
+    "yPosition": "350px",
+    "edges": [
+      "11041",
+      "11050",
+      "2429"
+    ]
+  },
+  {
+    "name": "11065",
+    "type": "Path",
+    "floor": "2",
+    "xPosition": "240px",
+    "yPosition": "1028px",
+    "edges": [
+      "11023",
+      "11054",
+      "11024",
+      "11052"
+    ]
+  },
+  {
+    "name": "2408",
+    "type": "Room",
+    "floor": "2",
+    "xPosition": "427px",
+    "yPosition": "1203px",
+    "edges": [
+      "11027"
+    ]
+  },
+  {
+    "name": "2404",
+    "type": "Classroom",
+    "floor": "2",
+    "xPosition": "737px",
+    "yPosition": "1169px",
+    "edges": [
+      "11015"
+    ]
+  }
+]
