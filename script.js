@@ -524,6 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
         pinManagment.scalePins(currentZoom, newZoom);
+        drawPaths();
     })
 
     zoomOut.addEventListener("click", function(){
@@ -535,6 +536,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
         pinManagment.scalePins(currentZoom, newZoom);
+        drawPaths();
     })
 
     zoomReset.addEventListener("click", function(){
@@ -545,5 +547,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = "1000px";
         fixImageSVG();
         loadFloorData();
+        drawPaths();
     })
 })
