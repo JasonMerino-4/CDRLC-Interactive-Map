@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let mapPathsSVG = document.getElementById("map_paths");
     let mapImage = document.getElementById("map_floorplan");
 
+    // ===== NEW (FILTER STATE & ELEMENTS) — START =====
+    const amenityButtons   = document.querySelectorAll(".amenity-btn");
+    const amenityClearBtn  = document.getElementById("amenity_clear");
+    // Multi-select: keep a set of active types (empty = no filter)
+    const activeFilterTypes = new Set();
+    // ===== NEW (FILTER STATE & ELEMENTS) — END =====
+
+
     class pin {
         constructor(name, type, floor, xPosition, yPosition){
             this.pinName = name;
@@ -23,8 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let newPinElement = document.createElement("div");
             newPinElement.classList.add("pin");
             newPinElement.classList.add(this.pinType);
+            
             newPinElement.style.left = xPosition;
             newPinElement.style.top = yPosition;
+
+            if (this.pinType === "Path") {
+                newPinElement.style.visibility = "hidden";   // still participates in layout (width/height)
+            }
 
             // Conditionally add icon
             const iconSrc = this.getIconForType(this.pinType);
@@ -107,77 +120,100 @@ document.addEventListener("DOMContentLoaded", function () {
     roomListContainer.style.overflowY = "auto";
     leftNavBar.appendChild(roomListContainer);
 
+
+
+
     // Build the sidebar list of rooms
     function updateRoomList() {
-    if (!roomListContainer) return;
-    roomListContainer.innerHTML = ""; // clear first
+        if (!roomListContainer) return;
+        roomListContainer.innerHTML = ""; // clear first
 
-    // --------------------------- NEW: list click -> focus ---------------------------
-    if (!roomListContainer.dataset.bound) {
-    roomListContainer.addEventListener("click", (e) => {
-        const row = e.target.closest(".roomlist-item, button.roomlist-item");
-        if (!row) return;
-        const name = row.getAttribute("data-name");
-        const pinObj = pinManagment.pinMap.get(name);
-        if (!pinObj) return;
+        // --------------------------- NEW: list click -> focus ---------------------------
+        if (!roomListContainer.dataset.bound) {
+            roomListContainer.addEventListener("click", (e) => {
+                const row = e.target.closest(".roomlist-item, button.roomlist-item");
+                if (!row) return;
+                const name = row.getAttribute("data-name");
+                const pinObj = pinManagment.pinMap.get(name);
+                if (!pinObj) return;
 
-        // visual feedback in the list is optional; the key is map focus+zoom:
-        focusAndZoomPin(pinObj, 150); // tweak desired zoom % if you want
+                // visual feedback in the list is optional; the key is map focus+zoom:
+                focusAndZoomPin(pinObj, 125); // tweak desired zoom % if you want
 
-        // optional: highlight the clicked row
-        roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
-        row.classList.add("is-active");
-    });
-    roomListContainer.dataset.bound = "1";
-    }
-    // --------------------------------------------------------------------------------
-
-
-    const rooms = Array.from(pinManagment.pinMap.values())
-        .filter(p => p.pinType && p.pinType !== "Path") // skip connectors
-        .sort((a, b) => a.pinName.localeCompare(b.pinName, undefined, { numeric: true }));
-
-    for (const pin of rooms) {
-        const btn = document.createElement("button");
-        btn.className = "roomlist-item";
-        btn.dataset.name = pin.pinName;
-        btn.textContent = `${pin.pinName} (${pin.pinType})`;
-
-        // basic style
-        btn.style.display = "block";
-        btn.style.width = "100%";
-        btn.style.margin = "4px 0";
-        btn.style.padding = "6px 8px";
-        btn.style.borderRadius = "8px";
-        btn.style.border = "1px solid #ccc";
-        btn.style.background = "#fff";
-        btn.style.cursor = "pointer";
-        btn.style.textAlign = "left";
-
-        // ---------------- CLICK EVENT ----------------
-        btn.addEventListener("click", () => {
-        const name = btn.dataset.name;
-        const pinObj = pinManagment.pinMap.get(name);
-        if (!pinObj) return;
-
-        // remove all selections
-        document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
-        document.querySelectorAll(".roomlist-item").forEach(el => el.style.background = "#fff");
-
-        // select this one
-        pinObj.pinElement.classList.add("selected");
-        pinManagment.focusedPin = pinObj;
-        console.log(pinManagment.focusedPin);
-        pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
-        drawPaths();
-
-        // visually mark active in list
-        btn.style.background = "#d8e7ff";
-        });
-        
-        roomListContainer.appendChild(btn);
-        
+                // optional: highlight the clicked row
+                roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
+                row.classList.add("is-active");
+            });
+            roomListContainer.dataset.bound = "1";
         }
+        // --------------------------------------------------------------------------------
+
+
+        // ===== CHANGED (FILTERED ROOMS FOR LIST) — START =====
+        const rooms = Array.from(pinManagment.pinMap.values())
+        .filter(p => p.pinType && p.pinType !== "Path")
+        .filter(p => activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType))
+        .sort((a, b) => a.pinName.localeCompare(b.pinName, undefined, { numeric: true }));
+        // ===== CHANGED (FILTERED ROOMS FOR LIST) — END =====
+
+        for (const pin of rooms) {
+            const btn = document.createElement("button");
+            // ---------- CHANGED: structure + styling to match the screenshot ----------
+            btn.className = "roomlist-item";
+            btn.dataset.name = pin.pinName;
+
+            const chipText = String(pin.pinType || "").toLowerCase();
+
+
+            // layout: content on left, chip+floor on right
+            btn.innerHTML = `
+                <div class="room-item">
+                    <div class="room-item__left">
+                    <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
+                    <strong class="room-item__title">${pin.pinName}</strong>
+                    </div>
+                    <div class="room-item__right">
+                    <span class="room-item__chip">${chipText}</span>
+                    <span class="room-item__floor">Floor ${pin.pinFloor}</span>
+                    </div>
+                </div>
+                `;
+                
+
+            btn.className = "roomlist-item";
+
+
+            // ---------------- CLICK EVENT ----------------
+            btn.addEventListener("click", () => {
+                const name = btn.dataset.name;
+                const pinObj = pinManagment.pinMap.get(name);
+                if (!pinObj) return;
+
+                // remove all selections
+                document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+                roomListContainer.querySelectorAll(".roomlist-item.is-active")
+                .forEach(el => el.classList.remove("is-active"));
+
+                // select this one
+                pinObj.pinElement.classList.add("selected");
+                pinManagment.focusedPin = pinObj;
+                console.log(pinManagment.focusedPin);
+                pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
+                drawPaths();
+
+                // mark active
+                btn.classList.add("is-active");
+            });
+            
+            roomListContainer.appendChild(btn);
+
+            // Apply active search term again so filters & search work together
+            const searchInput = document.getElementById("room_search");
+            if (searchInput && searchInput.value.trim() !== "") {
+                searchInput.dispatchEvent(new Event("input"));
+            }
+            
+            }
     }
     // ---------------------------------------------------------------
 
@@ -206,57 +242,119 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = `${newWidth}px`;
         fixImageSVG();
         pinManagment.scalePins(currentWidth, newWidth); // this already calls drawPaths()
+        
     }
 
     /** Center the scroll viewport on a pin (after zoom is applied) */
     function centerOnPin(pinObj) {
-    if (!pinObj || !mapWrapper) return;
+        if (!pinObj || !mapWrapper) return;
 
-    // target center in map coordinates (already scaled)
-    const cx = pinObj.getIntXCenterPosition();
-    const cy = pinObj.getIntYCenterPosition();
+        // target center in map coordinates (already scaled)
+        const cx = pinObj.getIntXCenterPosition();
+        const cy = pinObj.getIntYCenterPosition();
 
-    // figure out scroll container – mapWrapper itself
-    // (assumes CSS allows scrolling; if not, no harm)
-    const viewW = mapWrapper.clientWidth;
-    const viewH = mapWrapper.clientHeight;
+        const viewW = mapWrapper.clientWidth;
+        const viewH = mapWrapper.clientHeight;
 
-    let targetLeft = Math.max(0, cx - Math.floor(viewW / 2));
-    let targetTop  = Math.max(0, cy - Math.floor(viewH / 2));
+        let targetLeft = Math.max(0, cx - Math.floor(viewW / 2));
+        let targetTop  = Math.max(0, cy - Math.floor(viewH / 2));
 
-    // clamp to scrollable bounds if present
-    const maxLeft = Math.max(0, (mapWrapper.scrollWidth || 0) - viewW);
-    const maxTop  = Math.max(0, (mapWrapper.scrollHeight || 0) - viewH);
+        // clamp to scrollable bounds if present
+        const maxLeft = Math.max(0, (mapWrapper.scrollWidth || 0) - viewW);
+        const maxTop  = Math.max(0, (mapWrapper.scrollHeight || 0) - viewH);
 
-    targetLeft = Math.min(targetLeft, maxLeft);
-    targetTop  = Math.min(targetTop,  maxTop);
+        targetLeft = Math.min(targetLeft, maxLeft);
+        targetTop  = Math.min(targetTop,  maxTop);
 
-    if (typeof mapWrapper.scrollTo === "function") {
-        mapWrapper.scrollTo({ left: targetLeft, top: targetTop, behavior: "smooth" });
-    } else {
-        mapWrapper.scrollLeft = targetLeft;
-        mapWrapper.scrollTop  = targetTop;
-    }
+        if (typeof mapWrapper.scrollTo === "function") {
+            mapWrapper.scrollTo({ left: targetLeft, top: targetTop, behavior: "smooth" });
+        } else {
+            mapWrapper.scrollLeft = targetLeft;
+            mapWrapper.scrollTop  = targetTop;
+        }
     }
 
     /** Focus: highlight the pin, zoom (if needed), then center it */
-    function focusAndZoomPin(pinObj, desiredPercent = 170) {
-    if (!pinObj) return;
+    function focusAndZoomPin(pinObj, desiredPercent) {
+        if (!pinObj) return;
 
-    // Select this pin (reuse your existing selected class + focusedPin)
-    document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
-    pinObj.pinElement.classList.add("selected");
-    pinManagment.focusedPin = pinObj;
+        // Select this pin (reuse your existing selected class + focusedPin)
+        document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+        pinObj.pinElement.classList.add("selected");
+        pinManagment.focusedPin = pinObj;
 
-    // Zoom if below desired level; otherwise keep current zoom
-    const current = getCurrentZoomPercent();
-    const target = Math.max(current, desiredPercent);
-    setZoomPercent(target);
+        // Zoom if below desired level; otherwise keep current zoom
+        const current = getCurrentZoomPercent();
+        const target = Math.max(current, desiredPercent);
+        setZoomPercent(target);
 
-    // Center after layout updates
-    requestAnimationFrame(() => centerOnPin(pinObj));
+        // Center after layout updates
+        requestAnimationFrame(() => centerOnPin(pinObj));
     }
     // ============================================================================ 
+
+    // ===== NEW (FILTER LOGIC) — START =====
+    function applyAmenityFilter() {
+        // Show/hide pins based on multi-select set
+        pinManagment.pinMap.forEach((p) => {
+            const match = activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType);
+            p.pinElement.style.display = match ? "" : "none";
+        });
+        
+
+        // If current focus is hidden by the filter, clear selection & path
+        if (pinManagment.focusedPin && pinManagment.focusedPin.pinElement.style.display === "none") {
+            document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+            pinManagment.focusedPin = null;
+            pinManagment.currentPins.clear();
+            clearMapPaths();
+        }
+
+        // Update list to reflect the same filter
+        updateRoomList();
+
+        // Clear button visibility
+        if (amenityClearBtn) {
+            amenityClearBtn.hidden = activeFilterTypes.size === 0;
+        }
+
+        // Button active state (visual)
+        amenityButtons.forEach(btn => {
+            const t = btn.getAttribute("data-type");
+            if (activeFilterTypes.has(t)) {
+                btn.classList.add("is-active");
+            } else {
+                btn.classList.remove("is-active");
+            }
+        });
+
+        
+        drawPaths();
+    }
+
+    // Buttons
+    if (amenityButtons && amenityButtons.length) {
+        amenityButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const t = btn.getAttribute("data-type");
+                if (activeFilterTypes.has(t)) {
+                    activeFilterTypes.delete(t);
+                } else {
+                    activeFilterTypes.add(t);
+                }
+                applyAmenityFilter();
+            });
+        });
+    }
+
+    // Clear button
+    if (amenityClearBtn) {
+        amenityClearBtn.addEventListener("click", () => {
+            activeFilterTypes.clear();
+            applyAmenityFilter();
+        });
+    }
+    // ===== NEW (FILTER LOGIC) — END =====
 
 
 
@@ -264,41 +362,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const roomSearchInput = document.getElementById("room_search");
 
     if (roomSearchInput) {
-    roomSearchInput.addEventListener("input", function () {
-        const term = this.value.trim().toLowerCase();
+        roomSearchInput.addEventListener("input", function () {
+            const term = this.value.trim().toLowerCase();
 
-        // show all if blank
-        if (!term) {
-        document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
-            btn.style.display = "block";
-        });
-        return;
-        }
+            // show all if blank
+            if (!term) {
+            document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
+                btn.style.display = "block";
+            });
+                return;
+            }
 
-        // otherwise hide non-matching rooms
-        document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
-        const name = (btn.dataset.name || "").toLowerCase();
-        const label = btn.textContent.toLowerCase();
-        if (name.includes(term) || label.includes(term)) {
-            btn.style.display = "block";
-        } else {
-            btn.style.display = "none";
-        }
+            // otherwise hide non-matching rooms
+            document.querySelectorAll("#room_list .roomlist-item").forEach(btn => {
+                const name = (btn.dataset.name || "").toLowerCase();
+                const label = btn.textContent.toLowerCase();
+                if (name.includes(term) || label.includes(term)) {
+                    btn.style.display = "block";
+                } else {
+                    btn.style.display = "none";
+                }
+            });
         });
-    });
     }
     // -------------------------------------------------------------------------
 
 
     document.addEventListener("click", (e) => {
-    // Ignore clicks on pins
-    if (e.target.closest(".pin")) return;
+        // Ignore clicks on pins
+        if (e.target.closest(".pin")) return;
 
-    // Remove "selected" from all pins
-    document.querySelectorAll(".pin.selected").forEach(pin => {
-        pin.classList.remove("selected");
+        // Remove "selected" from all pins
+        document.querySelectorAll(".pin.selected").forEach(pin => {
+            pin.classList.remove("selected");
+        });
     });
-});
 
     const pinManagment = {
         pinMap: new Map(),
@@ -380,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pinObj.pinElement.style.left = (parseInt(pinObj.pinElement.style.left) * ratio) + "px";
             });
 
-            //drawPaths();
+            drawPaths();
         },
 
         findPath(startingPin, endPin) {
@@ -463,9 +561,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 //drawPaths();
 
-                 // ------- NEW -------
+              
                 updateRoomList();
-                // -------------------
+                applyAmenityFilter();
+
+                drawPaths();
+                
             })
             .catch((error) => console.error("Error loading JSON file", error));
     }

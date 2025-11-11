@@ -156,6 +156,11 @@ line {
   color: #111827;
 }
 
+#room_search {
+  width: 100%;
+  max-width: 285px;
+}
+
 #room_search, #starting_pin {
   display: flex;
   align-items: center;
@@ -174,6 +179,166 @@ line {
   font-size: 16px;
   color: #111827;
 }
+
+/* Room list item layout */
+.room-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.room-item__left {
+  flex: 1;
+  min-width: 0;
+}
+
+.room-item__title {
+  font-size: 16px;
+  color: #111827;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+
+.room-item__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  margin-left: 6px;
+}
+
+
+.room-item__chip {
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #fff;
+  color: #111827;
+}
+
+.room-item__floor {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.room-item .material-symbols-outlined {
+  font-size: 20px;
+  color: #6b7280;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.roomlist-item {
+  display: block;
+  width: calc(100% - 8px);
+  margin: 12px 0;
+  padding: 12px 10px;
+
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(17, 24, 39, 0.04);
+
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* NEW: selected room card looks like selected amenity button */
+.roomlist-item.is-active {
+  background: #111827;   /* black */
+  color: #ffffff;        /* white text */
+  border-color: #111827; /* match border */
+}
+
+/* NEW: ensure inner text/icons flip to white as well */
+.roomlist-item.is-active * {
+  color: #ffffff !important;
+}
+
+/* When a room is active, make the chip invert colors too */
+.roomlist-item.is-active .room-item__chip {
+  background: #ffffff;      /* white chip background */
+  color: #111827 !important; /* dark text for contrast */
+  border-color: #ffffff;    /* white border to blend with card */
+}
+
+/* Optional: darker on hover */
+.roomlist-item.is-active:hover {
+  background: #000000;
+}
+
+
+
+.roomlist-item:hover {
+  background: #f9fafb;
+  box-shadow: 0 2px 4px rgba(39, 39, 39, 0.421);
+}
+
+#room_list {
+  padding-left: 3px; 
+  padding-right: 3px; 
+}
+
+/* Base style for all filter buttons */
+.amenity-btn {
+  background: #f3f4f6;        /* light gray background */
+  color: #111827;             /* dark text */
+  border: 1px solid #d1d5db;  /* subtle border */
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.amenity-btn:hover {
+  background: #e5e7eb;
+}
+
+/* Active (selected) buttons */
+.amenity-btn.is-active {
+  background: #02194be0;   /* black background */
+  color: #ffffff;        /* white text */
+  border-color: #111827; /* match border to background */
+}
+
+
+/* Clear All Filters button */
+.amenity-clear {
+  background: #fef2f2;       /* light red background */
+  color: #b91c1c;            /* dark red text */
+  border: 1px solid #fecaca; /* subtle red border */
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 4px;          /* small spacing from other buttons */
+}
+
+/* Hover effect */
+.amenity-clear:hover {
+  background: #ef4444;  /* red background */
+  color: white;         /* white text */
+  border-color: #ef4444;
+}
+
+.quick-filters {
+  display: flex;
+  flex-wrap: wrap; /* allows wrapping to multiple lines */
+  gap: 8px;        /* space between buttons */
+}
+
 
 
 
