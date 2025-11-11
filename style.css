@@ -29,7 +29,7 @@ footer {
     gap: 16px;
     display: flex;
     justify-content:space-between;
-    margin: 32px 128px;
+    margin: 32px 8vw;
     flex-wrap: wrap;
 }
 
@@ -39,6 +39,10 @@ footer {
 }
 
 h1, h2 {
+    margin: 0px;
+}
+
+p {
     margin: 0px;
 }
 
@@ -53,9 +57,10 @@ dd {
 
 #cdrlc_header {
     display: flex;
+    flex-wrap: wrap;
     font-size: small;
     font-weight: 100;
-    padding: 10px 128px 10px;
+    padding: 10px 8vw 10px;
     margin-bottom: 32px;
     border-bottom: 1px solid #DCDCDE;
     background-color: white; 
@@ -63,7 +68,8 @@ dd {
 }
 
 #address_container {
-    text-align: right;
+    font-weight: 400;
+    padding-bottom: 32px;
 }
 
 .heading {
@@ -76,7 +82,7 @@ dd {
     border-radius: 12px;
     background-color: #F5F5F7;
     color: black;
-    margin: 10px 128px 10px;
+    margin: 10px 8vw 10px;
     min-width: 256px;
 }
 
