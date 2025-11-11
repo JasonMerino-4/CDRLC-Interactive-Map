@@ -156,7 +156,7 @@ line {
   color: #111827;
 }
 
-#room_search {
+#room_search, #starting_pin {
   display: flex;
   align-items: center;
   gap: 10px;

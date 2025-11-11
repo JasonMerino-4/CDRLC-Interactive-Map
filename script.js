@@ -299,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const pinManagment = {
         pinMap: new Map(),
+        currentPins: new Set(),
         focusedPin: null,
 
         clearMap: function(){
@@ -370,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let ratio = newImageX/oldImageX;
             
             this.pinMap.forEach((pinObj, name) => {
-                pinObj.pinElement.style.width = (parseInt(pinObj.pinElement.offsetWidth) * ratio) + "px";
+                pinObj.pinElement.style.width = (parseInt(pinObj.pinElement.offsetWidth) * ratio).toString() + "px";
                 pinObj.pinElement.style.height = (parseInt(pinObj.pinElement.offsetHeight) * ratio).toString() + "px";
                 pinObj.pinElement.style.top = (parseInt(pinObj.pinElement.style.top) * ratio) + "px";
                 pinObj.pinElement.style.left = (parseInt(pinObj.pinElement.style.left) * ratio) + "px";
@@ -378,6 +379,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //drawPaths();
         },
+
+        findPath(startingPin, endPin) {
+            //fml this was a pain in the ass to write
+            console.log("pathing");
+            let Q = new Set();
+            let dist = new Map();
+            let prev = new Map();
+
+            this.pinMap.forEach((pinObj, name) => {
+                dist.set(name, Number.MAX_SAFE_INTEGER);
+                prev.set(name, null);
+                Q.add(name);
+            });
+
+            console.log(Q.size);
+
+            dist.set(startingPin, 0);
+
+            while (Q.size != 0){
+                let u = null;
+                let smallest = Number.MAX_SAFE_INTEGER;
+                for (let v of Q){
+                    if (dist.get(v) <= smallest){
+                        smallest = dist.get(v);
+                        u = v;
+                    }
+                }
+
+                Q.delete(u)
+                let uPin = this.pinMap.get(u);
+                uPin.pinNeighbors.forEach((neighbor) => {
+                    if (Q.has(neighbor.pinName)){
+                        let alt = dist.get(u) + 1;
+                        if (alt < dist.get(neighbor.pinName)){
+                            dist.set(neighbor.pinName, alt);
+                            prev.set(neighbor.pinName, u);
+                        }
+                    }
+                })
+            }
+
+            this.currentPins.clear();
+            let u = endPin;
+
+            console.log(prev.get(u));
+
+            if (prev.get(u) !== null || u === startingPin){
+                while (u != null){
+                    this.currentPins.add(this.pinMap.get(u));
+                    u = prev.get(u);
+                }
+            }
+
+            console.log(this.currentPins);
+        }
     };
 
     function loadFloorData(){
@@ -436,9 +492,11 @@ document.addEventListener("DOMContentLoaded", function () {
         fixImageSVG();   
         clearMapPaths();
 
-        pinManagment.pinMap.forEach((pinObj, name) => {
+        pinManagment.currentPins.forEach((pinObj) => {
             pinObj.pinNeighbors.forEach((neighbor) => {
-                addLine(pinObj, neighbor);
+                if (pinManagment.currentPins.has(neighbor)){ //only want paths for those along the paths, not for every neighbor along the path
+                    addLine(pinObj, neighbor);
+                }
             })
         })
     }
@@ -474,6 +532,8 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
         pinManagment.scalePins(currentZoom, newZoom);
+        pinManagment.findPath("1400E", "1400N");
+        drawPaths();
     })
 
     zoomReset.addEventListener("click", function(){
