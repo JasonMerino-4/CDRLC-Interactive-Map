@@ -370,9 +370,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let ratio = newImageX/oldImageX;
             
             this.pinMap.forEach((pinObj, name) => {
-                console.log(ratio);
-                pinObj.pinElement.style.width = (parseInt(pinObj.pinElement.style.width) * ratio) + "px";
-                pinObj.pinElement.style.height = (parseInt(pinObj.pinElement.style.height) * ratio) + "px";
+                pinObj.pinElement.style.width = (parseInt(pinObj.pinElement.offsetWidth) * ratio) + "px";
+                pinObj.pinElement.style.height = (parseInt(pinObj.pinElement.offsetHeight) * ratio).toString() + "px";
                 pinObj.pinElement.style.top = (parseInt(pinObj.pinElement.style.top) * ratio) + "px";
                 pinObj.pinElement.style.left = (parseInt(pinObj.pinElement.style.left) * ratio) + "px";
             });
@@ -382,7 +381,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     function loadFloorData(){
-        console.log("once");
         const floorURLs = [
             ".\\Floordata\\floor1.json",
         ]
@@ -460,7 +458,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomNumber = document.getElementById("map_zoom_number");
         let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
         let newZoom = 1000 * ((parseInt(zoomNumber.textContent) + 10)/100);
-        console.log(currentZoom, newZoom, zoomNumber.textContent);
         zoomNumber.textContent = (parseInt(zoomNumber.textContent) + 10).toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
@@ -472,7 +469,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomNumber = document.getElementById("map_zoom_number");
         let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
         let newZoom = 1000 * ((parseInt(zoomNumber.textContent) - 10)/100);
-        console.log(currentZoom, newZoom, zoomNumber.textContent);
         zoomNumber.textContent = (parseInt(zoomNumber.textContent) - 10).toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
@@ -483,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
     zoomReset.addEventListener("click", function(){
         const zoomNumber = document.getElementById("map_zoom_number");
         zoomNumber.textContent = "100%";
-
+        
         mapReset();
         mapImage.style.width = "1000px";
         fixImageSVG();
