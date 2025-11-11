@@ -167,6 +167,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // select this one
         pinObj.pinElement.classList.add("selected");
         pinManagment.focusedPin = pinObj;
+        console.log(pinManagment.focusedPin);
+        pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
+        drawPaths();
 
         // visually mark active in list
         btn.style.background = "#d8e7ff";
@@ -532,8 +535,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
         pinManagment.scalePins(currentZoom, newZoom);
-        pinManagment.findPath("1400E", "1400N");
-        drawPaths();
     })
 
     zoomReset.addEventListener("click", function(){
