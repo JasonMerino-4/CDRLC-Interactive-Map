@@ -541,12 +541,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zoomReset.addEventListener("click", function(){
         const zoomNumber = document.getElementById("map_zoom_number");
+        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
+        let newZoom = 1000;
         zoomNumber.textContent = "100%";
-        
-        mapReset();
-        mapImage.style.width = "1000px";
+
+        mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
-        loadFloorData();
+        pinManagment.scalePins(currentZoom, newZoom);
         drawPaths();
     })
 })
