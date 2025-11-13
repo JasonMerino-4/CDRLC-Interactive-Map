@@ -4,6 +4,7 @@
     }
 
     #map_wrapper{
+        border-radius: 0px;
         margin: 0px 0px;
     }
 }
@@ -15,5 +16,6 @@
 
     #map_wrapper{
         margin: 0px 0px;
+        border-radius: 0px;
     }
 }
