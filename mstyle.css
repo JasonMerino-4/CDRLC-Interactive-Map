@@ -2,10 +2,18 @@
     #navbar_map_wrapper {
         margin: 32px 0;
     }
+
+    #map_wrapper{
+        margin: 0px 0px;
+    }
 }
 
 @media (max-width:480px)  { 
     #navbar_map_wrapper {
         margin: 32px 0;
+    }
+
+    #map_wrapper{
+        margin: 0px 0px;
     }
 }

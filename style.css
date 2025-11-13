@@ -19,7 +19,7 @@ footer {
     flex-direction: column;
     gap: 16px;
     border: 1px solid #DCDCDE;
-    padding: 16px;
+    padding: 16px 0px;
     flex: 3 1 0;
     overflow: scroll;
     min-width: 256px;
@@ -102,6 +102,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     height: 48px;
+    margin: 0 16px;
 }
 
 #map_title {
@@ -139,6 +140,7 @@ h3 {
 #map_legend_container {
     padding: 8px;
     background-color: white;
+    margin: 0 16px;
 }
 
 #map_legend {
