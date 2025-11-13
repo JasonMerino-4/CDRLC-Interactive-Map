@@ -42,9 +42,6 @@ h1, h2 {
     margin: 0px;
 }
 
-p {
-    margin: 0px;
-}
 
 dt {
     margin-bottom: 8px;
@@ -76,7 +73,7 @@ dd {
     font-weight: 400;
 }
 
-#instructions_wrapper {
+#instructions_wrapper, #studyroom_appointments_wrapper {
     padding: 8px 16px;
     border: 1px solid #DCDCDE;
     border-radius: 12px;
