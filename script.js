@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
         createPinHTMLElement(xPosition, yPosition) {
             let newPinElement = document.createElement("div");
             newPinElement.classList.add("pin");
-            console.log(this.pinType.replace(/ /g, ''));
             newPinElement.classList.add(this.pinType.replace(/ /g, ''));
             
             newPinElement.style.left = xPosition;
@@ -84,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "Entrance": return "icons/entrance.svg";
                 case "Stairs": return "icons/stairs.svg";
                 case "Elevators": return "icons/elevator.svg";
+                case "Study Room": return "icons/studyroom.svg";
                 case "Bathroom": return "icons/bathroom.svg";
                 case "Path":
                 case "Hallway":

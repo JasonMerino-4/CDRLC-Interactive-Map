@@ -69,6 +69,26 @@ footer {
     flex-wrap: wrap;
 }
 
+#floor_buttons {
+    margin: 0 16px;
+    display: flex;
+    gap: 16px;
+}
+
+.floorButton {
+    color: black;
+    border: 1px solid #DCDCDE;
+    border-radius: 16px;
+    height: 32px;
+    flex: 1;
+}
+
+.floorButtonSelected {
+    color: white;
+    border: 1px solid black;
+    background-color: black;
+}
+
 #left_nav_bar {
     flex: 1 1 0;
     min-width: 256px;
