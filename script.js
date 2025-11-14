@@ -651,4 +651,26 @@ document.addEventListener("DOMContentLoaded", function () {
         pinManagment.scalePins(currentZoom, newZoom);
         drawPaths();
     })
+    let currentFloor = 1; // default floor
+
+const floorButtons = document.querySelectorAll("#floor_buttons button");
+
+floorButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const selectedFloor = parseInt(btn.dataset.floor);
+        if (selectedFloor === currentFloor) return;
+
+        currentFloor = selectedFloor;
+        switchFloor(currentFloor);
+    });
+});
+
+function switchFloor(floorNumber) {
+    pinManagment.clearMap();
+
+    mapImage.src = `Floorplans/floor${floorNumber}.svg`;
+
+    fetchData(`./Floordata/floor${floorNumber}.json`);
+}
+
 })
