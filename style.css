@@ -25,7 +25,7 @@ main {
     height: 30vh;
     border-bottom: 1px solid #DCDCDE;
     justify-content: space-around;
-    background-image: url("/images/CDRLC.jpg");
+    background-image: url("./images/CDRLC.jpg");
     background-color: #777777;
     background-blend-mode: multiply;
     background-position: bottom;
