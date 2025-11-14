@@ -3,7 +3,43 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 0px;
+    margin: 0px
+}
+
+main {
+    padding: 0px;
+}
+
+#cdrlc_header {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: large;
+    align-items: center;
+    font-weight: 100;
+    padding: 10px 8vw 10px;
+    margin: 0;
+    margin-bottom: 32px;
+    height: 30vh;
+    border-bottom: 1px solid #DCDCDE;
+    justify-content: space-between;
+    background-image: url("/images/CDRLC.jpg");
+    background-color: #777777;
+    background-blend-mode: multiply;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#address_container {
+    font-weight: 400;
+}
+
+.heading {
+    font-weight: 400;
 }
 
 footer {
@@ -15,7 +51,7 @@ footer {
 
 
 #floorplan_legend_container {
-    display:flex;
+    display: flex;
     flex-direction: column;
     gap: 16px;
     border: 1px solid #DCDCDE;
@@ -28,7 +64,7 @@ footer {
 #navbar_map_wrapper {
     gap: 16px;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     margin: 32px 8vw;
     flex-wrap: wrap;
 }
@@ -38,7 +74,8 @@ footer {
     min-width: 256px;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin: 0px;
 }
 
@@ -52,27 +89,8 @@ dd {
     color: #4b4b4b;
 }
 
-#cdrlc_header {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: small;
-    font-weight: 100;
-    padding: 10px 8vw 10px;
-    margin-bottom: 32px;
-    border-bottom: 1px solid #DCDCDE;
-    background-color: white; 
-    justify-content: space-between;
-}
-
-#address_container {
-    font-weight: 400;
-}
-
-.heading {
-    font-weight: 400;
-}
-
-#instructions_wrapper, #studyroom_appointments_wrapper {
+#instructions_wrapper,
+#studyroom_appointments_wrapper {
     padding: 8px 16px;
     border: 1px solid #DCDCDE;
     border-radius: 12px;
@@ -118,7 +136,9 @@ h3 {
     gap: 8px;
 }
 
-#map_zoomin, #map_zoomout, #map_reset {
+#map_zoomin,
+#map_zoomout,
+#map_reset {
     width: 32px;
     height: 32px;
     border-radius: 4px;
@@ -127,7 +147,9 @@ h3 {
     background-color: white;
 }
 
-#map_zoomin:hover, #map_zoomout:hover, #map_reset:hover {
+#map_zoomin:hover,
+#map_zoomout:hover,
+#map_reset:hover {
     background-color: lightgray;
 }
 
@@ -192,4 +214,3 @@ h3 {
     border-radius: 12px;
     background-color: white;
 }
-
