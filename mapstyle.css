@@ -23,7 +23,6 @@ line {
 }
 
 #map_wrapper {
-    background-color: black;
     position: relative;
     background-color: white;
     max-height: 80vh;
@@ -130,6 +129,11 @@ line {
 .pin.Bathroom {
     background-color: #F44336;
     border: 2px solid #C62828;
+}
+
+.pin.StudyRoom {
+    background-color: #BDBDBD;
+    border: 2px solid #969696;
 }
 
 .pin.Hallway,

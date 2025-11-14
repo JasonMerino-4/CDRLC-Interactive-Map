@@ -22,10 +22,10 @@ main {
     padding: 10px 8vw 10px;
     margin: 0;
     margin-bottom: 32px;
-    height: 30vh;
+    height: 25vh;
     border-bottom: 1px solid #DCDCDE;
     justify-content: space-around;
-    background-image: url("./images/CDRLC.jpg");
+    background-image: url("../images/CDRLC.jpg");
     background-color: #777777;
     background-blend-mode: multiply;
     background-position: bottom;

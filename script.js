@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
         createPinHTMLElement(xPosition, yPosition) {
             let newPinElement = document.createElement("div");
             newPinElement.classList.add("pin");
-            newPinElement.classList.add(this.pinType);
+            console.log(this.pinType.replace(/ /g, ''));
+            newPinElement.classList.add(this.pinType.replace(/ /g, ''));
             
             newPinElement.style.left = xPosition;
             newPinElement.style.top = yPosition;
@@ -548,6 +549,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchData(url) {
+        pinManagment.clearMap();
+
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
@@ -671,6 +674,8 @@ function switchFloor(floorNumber) {
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
     fetchData(`./Floordata/floor${floorNumber}.json`);
+
+    console.log(pinManagment.pinMap.size);
 }
 
 })
