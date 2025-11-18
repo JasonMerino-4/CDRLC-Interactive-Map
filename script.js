@@ -380,9 +380,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     btn.style.display = "none";
                 }
             });
+
+            
         });
     }
     // -------------------------------------------------------------------------
+
+    // event handler for pressing enter in search bar
+    roomSearchInput.addEventListener("keydown", function (e) {
+
+        if (e.key === "Enter") {
+            
+            e.preventDefault();
+            // Find the first room that is visible
+            const firstRoom = Array.from(document.querySelectorAll("#room_list .roomlist-item")).find(btn => btn.style.display == "block");
+
+            if (!firstRoom)
+                return;
+
+            firstRoom.click();
+        }
+    });
 
 
     document.addEventListener("click", (e) => {
