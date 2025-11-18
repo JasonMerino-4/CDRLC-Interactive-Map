@@ -138,8 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const pinObj = pinManagment.pinMap.get(name);
                 if (!pinObj) return;
 
-                // visual feedback in the list is optional; the key is map focus+zoom:
-                focusAndZoomPin(pinObj, 125); // tweak desired zoom % if you want
+                
+                centerOnPin(pinObj);
+
+
+                //focusAndZoomPin(pinObj, 125); // centers AND zooms to 125% on pin
 
                 // optional: highlight the clicked row
                 roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
@@ -308,8 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 p.pinElement.style.display = "none"; // hide pin
             }
         });
-        
-
         // If current focus is hidden by the filter, clear selection & path
         if (pinManagment.focusedPin && pinManagment.focusedPin.pinElement.style.display === "none") {
             document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
