@@ -297,8 +297,16 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyAmenityFilter() {
         // Show/hide pins based on multi-select set
         pinManagment.pinMap.forEach((p) => {
-            const match = activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType);
-            p.pinElement.style.display = match ? "" : "none";
+            const isCheckpoint = (p.pinType === "Checkpoint");
+            const noFiltersSelected = (activeFilterTypes.size === 0);
+            const matchesFilter = activeFilterTypes.has(p.pinType);
+
+            if (isCheckpoint || noFiltersSelected || matchesFilter) {
+                p.pinElement.style.display = ""; // display pin
+            } else {
+                // hide pin
+                p.pinElement.style.display = "none"; // hide pin
+            }
         });
         
 
