@@ -313,10 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update list to reflect the same filter
         updateRoomList();
 
-        // Clear button visibility
-        if (amenityClearBtn) {
-            amenityClearBtn.hidden = activeFilterTypes.size === 0;
-        }
+
 
         // Button active state (visual)
         amenityButtons.forEach(btn => {
