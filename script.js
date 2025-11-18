@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "Hallway":
                     return null;
                 default:
-                    return "icons/default.svg";
+                    return null;
             }
         }
 
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // ===== CHANGED (FILTERED ROOMS FOR LIST) — START =====
         const rooms = Array.from(pinManagment.pinMap.values())
-        .filter(p => p.pinType && p.pinType !== "Path")
+        .filter(p => p.pinType && p.pinType !== "Path" && p.pinType !== "Checkpoint")
         .filter(p => activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType))
         .sort((a, b) => a.pinName.localeCompare(b.pinName, undefined, { numeric: true }));
         // ===== CHANGED (FILTERED ROOMS FOR LIST) — END =====
@@ -198,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // select this one
                 pinObj.pinElement.classList.add("selected");
                 pinManagment.focusedPin = pinObj;
-                console.log(pinManagment.focusedPin);
                 pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
                 drawPaths();
 
@@ -483,8 +482,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         findPath(startingPin, endPin) {
-            //fml this was a pain in the ass to write
-            console.log("pathing");
             let Q = new Set();
             let dist = new Map();
             let prev = new Map();
@@ -494,8 +491,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 prev.set(name, null);
                 Q.add(name);
             });
-
-            console.log(Q.size);
 
             dist.set(startingPin, 0);
 
@@ -524,17 +519,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
             this.currentPins.clear();
             let u = endPin;
-
-            console.log(prev.get(u));
+            let checkpoints = new Array()
 
             if (prev.get(u) !== null || u === startingPin){
                 while (u != null){
                     this.currentPins.add(this.pinMap.get(u));
+                    if (this.pinMap.get(u).pinType == "Checkpoint"){
+                        checkpoints.push(this.pinMap.get(u).pinName);
+                    }
                     u = prev.get(u);
                 }
             }
 
-            console.log(this.currentPins);
+
+            this.showTextDirections(checkpoints.reverse())
+        },
+
+        showTextDirections(checkpoints){
+            let directionsList = document.getElementById("text_directions_list");
+
+            while (directionsList.firstChild != null){
+                directionsList.removeChild(directionsList.lastChild);
+            }
+
+            for (const checkpoint of checkpoints){
+                let listItem = document.createElement("li");
+                listItem.textContent = checkpoint;
+                directionsList.appendChild(listItem);
+            }
         }
     };
 
@@ -674,8 +686,6 @@ function switchFloor(floorNumber) {
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
     fetchData(`./Floordata/floor${floorNumber}.json`);
-
-    console.log(pinManagment.pinMap.size);
 }
 
 })

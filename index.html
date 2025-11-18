@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="./mstyle.css">
     <script src="./script.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,0,0" />
 
 </head>
 
@@ -23,13 +24,14 @@
                 <h2 class="heading">Computer Design Research and Learning Center</h2>
             </div>
             <div id="address_container">
-                    <p>850 W Taylor St</p>
-                    <p>Chicago, IL 60607</p>
-                </div>
+                <p>850 W Taylor St</p>
+                <p>Chicago, IL 60607</p>
+            </div>
         </header>
         <div id="studyroom_appointments_wrapper">
             <h3>CDRLC Studyrooms</h3>
-            <p>The CDRLC offers 5 study rooms for students to use by appointment. Appontments can be scheduled here at <a href="https://sites.google.com/uic.edu/uic-cdrlc-booking-for-students/home">CDRLC Booking</a></p>
+            <p>The CDRLC offers 5 study rooms for students to use by appointment. Appontments can be scheduled here at
+                <a href="https://sites.google.com/uic.edu/uic-cdrlc-booking-for-students/home">CDRLC Booking</a></p>
         </div>
         <div id="instructions_wrapper">
             <h3>How to Use the CDLRC Map</h3>
@@ -40,14 +42,22 @@
                 </div>
                 <div class="instruction_item">
                     <dt>Browsing Floors</dt>
-                    <dd>Use the floor buttons to switch between floors. The selected floor will be used when filters are applied. </dd>
+                    <dd>Use the floor buttons to switch between floors. The selected floor will be used when filters are
+                        applied. </dd>
                 </div>
                 <div class="instruction_item">
                     <dt>Get Directions</dt>
-                    <dd>Click or input a room as a starting point and another as the destination point. Text direction and visual navigation will activate.</dd>
+                    <dd>Click or input a room as a starting point and another as the destination point. Text direction
+                        and visual navigation will activate.</dd>
                 </div>
             </dl>
         </div>
+        <div class="clean_box" id="text_directions_wrapper">
+                <p1>Text Directions</p1>
+                <ol id="text_directions_list">
+                    <li>No directions available</li>
+                </ol>
+            </div>
         <div id="navbar_map_wrapper">
             <div class="clean_box" id="left_nav_bar">
                 <div id="find_room_block" class="find-room">
@@ -55,16 +65,16 @@
                     <input type="text" id="room_search" placeholder="Search by room number or name" />
                 </div>
                 <div id="amenity_filter" class="amenity-box">
-                <h3 class="mb-3">Quick Filters</h3>
-                <div class="quick-filters">
-                    <button class="amenity-btn" data-type="Classroom">Classrooms</button>
-                    <button class="amenity-btn" data-type="Bathroom">Restrooms</button>
-                    <button class="amenity-btn" data-type="Study Room">Study Rooms</button>
-                    <button class="amenity-btn" data-type="Entrance">Entrances</button>
-                    <button class="amenity-btn" data-type="Stairs">Stairs</button>
-                    <button class="amenity-btn" data-type="Elevators">Elevators</button>
-                </div>
-                <button id="amenity_clear" class="amenity-clear" hidden>Clear All Filters</button>
+                    <h3 class="mb-3">Quick Filters</h3>
+                    <div class="quick-filters">
+                        <button class="amenity-btn" data-type="Classroom">Classrooms</button>
+                        <button class="amenity-btn" data-type="Bathroom">Restrooms</button>
+                        <button class="amenity-btn" data-type="Study Room">Study Rooms</button>
+                        <button class="amenity-btn" data-type="Entrance">Entrances</button>
+                        <button class="amenity-btn" data-type="Stairs">Stairs</button>
+                        <button class="amenity-btn" data-type="Elevators">Elevators</button>
+                    </div>
+                    <button id="amenity_clear" class="amenity-clear" hidden>Clear All Filters</button>
                 </div>
             </div>
             <div class="clean_box" id="floorplan_legend_container">
@@ -116,9 +126,13 @@
                             <div id="elevator_legend_icon" class="legend_icon"></div>
                             <dt>Elevator</dt>
                         </div>
+                        <div class="legend_item">
+                            <div id="miscroom_legend_icon" class="legend_icon"></div>
+                            <dt>Misc. Room</dt>
+                        </div>
                     </dl>
                 </div>
-            </div>  
+            </div>
         </div>
         <footer>
             <p>CS 422 UI Design and Programming | University of Illinois Chicago</p>

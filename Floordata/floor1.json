@@ -110,10 +110,10 @@
     "name": "1400E",
     "type": "Entrance",
     "floor": "1",
-    "xPosition": "798px",
-    "yPosition": "1039px",
+    "xPosition": "800px",
+    "yPosition": "1040px",
     "edges": [
-      "11023"
+      "Main Hall East Side"
     ]
   },
   {
@@ -123,8 +123,8 @@
     "xPosition": "138px",
     "yPosition": "1015px",
     "edges": [
-      "11042",
-      "11057"
+      "11057",
+      "Main Hall West Side"
     ]
   },
   {
@@ -134,9 +134,9 @@
     "xPosition": "367px",
     "yPosition": "184px",
     "edges": [
-      "11000",
       "1430",
-      "11056"
+      "11056",
+      "North Hallway by North Entrance"
     ]
   },
   {
@@ -391,7 +391,7 @@
     "xPosition": "244px",
     "yPosition": "1094px",
     "edges": [
-      "11043"
+      "West Side Cafe Area"
     ]
   },
   {
@@ -432,9 +432,7 @@
     "floor": "1",
     "xPosition": "201px",
     "yPosition": "952px",
-    "edges": [
-      "11042"
-    ]
+    "edges": []
   },
   {
     "name": "E1",
@@ -443,7 +441,7 @@
     "xPosition": "243px",
     "yPosition": "964px",
     "edges": [
-      "11042"
+      "Main Hall West Side"
     ]
   },
   {
@@ -455,31 +453,19 @@
     "edges": [
       "11055",
       "11047",
-      "11043"
+      "West Side Cafe Area"
     ]
   },
   {
     "name": "1401",
     "type": "Hallway",
     "floor": "1",
-    "xPosition": "508px",
-    "yPosition": "1255px",
+    "xPosition": "505px",
+    "yPosition": "1252px",
     "edges": [
       "11031",
-      "11032"
-    ]
-  },
-  {
-    "name": "1400",
-    "type": "Hallway",
-    "floor": "1",
-    "xPosition": "434px",
-    "yPosition": "1002px",
-    "edges": [
-      "11007",
-      "11037",
-      "11023",
-      "11039"
+      "South Wing East Side",
+      "South Wing Center"
     ]
   },
   {
@@ -489,8 +475,8 @@
     "xPosition": "388px",
     "yPosition": "761px",
     "edges": [
-      "11007",
-      "11005"
+      "11005",
+      "North Hallway"
     ]
   },
   {
@@ -500,20 +486,8 @@
     "xPosition": "385px",
     "yPosition": "418px",
     "edges": [
-      "11000",
-      "11002"
-    ]
-  },
-  {
-    "name": "11000",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "366px",
-    "yPosition": "236px",
-    "edges": [
-      "1400N",
-      "11001",
-      "1400B"
+      "11002",
+      "North Hallway by North Entrance"
     ]
   },
   {
@@ -523,9 +497,9 @@
     "xPosition": "310px",
     "yPosition": "244px",
     "edges": [
-      "11000",
       "1426",
-      "1428"
+      "1428",
+      "North Hallway by North Entrance"
     ]
   },
   {
@@ -561,7 +535,7 @@
     "edges": [
       "11006",
       "1400A",
-      "11012"
+      "North Hallway Center"
     ]
   },
   {
@@ -577,28 +551,16 @@
     ]
   },
   {
-    "name": "11007",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "378px",
-    "yPosition": "923px",
-    "edges": [
-      "1400A",
-      "11008",
-      "1400"
-    ]
-  },
-  {
     "name": "11008",
     "type": "Path",
     "floor": "1",
     "xPosition": "295px",
     "yPosition": "900px",
     "edges": [
-      "11007",
       "1422C",
       "1422D",
-      "1422"
+      "1422",
+      "North Hallway"
     ]
   },
   {
@@ -610,7 +572,7 @@
     "edges": [
       "11010",
       "11002",
-      "11012"
+      "North Hallway Center"
     ]
   },
   {
@@ -631,20 +593,8 @@
     "xPosition": "352px",
     "yPosition": "592px",
     "edges": [
-      "11012",
-      "1424"
-    ]
-  },
-  {
-    "name": "11012",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "384px",
-    "yPosition": "604px",
-    "edges": [
-      "11009",
-      "11011",
-      "11005"
+      "1424",
+      "North Hallway Center"
     ]
   },
   {
@@ -747,29 +697,16 @@
     ]
   },
   {
-    "name": "11023",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "749px",
-    "yPosition": "1042px",
-    "edges": [
-      "1400E",
-      "11024",
-      "1400",
-      "11038"
-    ]
-  },
-  {
     "name": "11024",
     "type": "Path",
     "floor": "1",
     "xPosition": "752px",
     "yPosition": "1215px",
     "edges": [
-      "11023",
       "11025",
       "11026",
-      "11059"
+      "11059",
+      "South East Branch Hallway"
     ]
   },
   {
@@ -791,20 +728,8 @@
     "yPosition": "1257px",
     "edges": [
       "11024",
-      "11027",
-      "11054"
-    ]
-  },
-  {
-    "name": "11027",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "722px",
-    "yPosition": "1256px",
-    "edges": [
-      "11026",
-      "11028",
-      "11029"
+      "11054",
+      "South Wing East Side"
     ]
   },
   {
@@ -814,8 +739,8 @@
     "xPosition": "717px",
     "yPosition": "1223px",
     "edges": [
-      "11027",
-      "1406A"
+      "1406A",
+      "South Wing East Side"
     ]
   },
   {
@@ -825,8 +750,8 @@
     "xPosition": "721px",
     "yPosition": "1279px",
     "edges": [
-      "11027",
-      "1405"
+      "1405",
+      "South Wing East Side"
     ]
   },
   {
@@ -841,27 +766,14 @@
     ]
   },
   {
-    "name": "11032",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "473px",
-    "yPosition": "1255px",
-    "edges": [
-      "1401",
-      "11033",
-      "11034",
-      "11050"
-    ]
-  },
-  {
     "name": "11033",
     "type": "Path",
     "floor": "1",
-    "xPosition": "469px",
-    "yPosition": "1284px",
+    "xPosition": "467px",
+    "yPosition": "1289px",
     "edges": [
-      "11032",
-      "1407"
+      "1407",
+      "South Wing Center"
     ]
   },
   {
@@ -871,10 +783,10 @@
     "xPosition": "464px",
     "yPosition": "1164px",
     "edges": [
-      "11032",
       "11035",
       "11036",
-      "11037"
+      "South Middle Branch Hallway",
+      "South Wing Center"
     ]
   },
   {
@@ -900,25 +812,14 @@
     ]
   },
   {
-    "name": "11037",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "466px",
-    "yPosition": "1071px",
-    "edges": [
-      "11034",
-      "1400"
-    ]
-  },
-  {
     "name": "11038",
     "type": "Path",
     "floor": "1",
     "xPosition": "707px",
     "yPosition": "1065px",
     "edges": [
-      "11023",
-      "1S3"
+      "1S3",
+      "Main Hall East Side"
     ]
   },
   {
@@ -928,8 +829,6 @@
     "xPosition": "319px",
     "yPosition": "1056px",
     "edges": [
-      "1400",
-      "11042",
       "1419"
     ]
   },
@@ -948,38 +847,12 @@
     "name": "11041",
     "type": "Path",
     "floor": "1",
-    "xPosition": "275px",
-    "yPosition": "1163px",
+    "xPosition": "279px",
+    "yPosition": "1166px",
     "edges": [
       "11040",
-      "1414"
-    ]
-  },
-  {
-    "name": "11042",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "209px",
-    "yPosition": "1024px",
-    "edges": [
-      "11039",
-      "11043",
-      "1400W",
-      "E2",
-      "E1"
-    ]
-  },
-  {
-    "name": "11043",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "201px",
-    "yPosition": "1111px",
-    "edges": [
-      "11042",
-      "11044",
-      "1400D",
-      "1418"
+      "1414",
+      "11049"
     ]
   },
   {
@@ -989,23 +862,10 @@
     "xPosition": "201px",
     "yPosition": "1175px",
     "edges": [
-      "11043",
-      "11045",
       "1416",
-      "11055"
-    ]
-  },
-  {
-    "name": "11045",
-    "type": "Path",
-    "floor": "1",
-    "xPosition": "204px",
-    "yPosition": "1249px",
-    "edges": [
-      "11044",
-      "11046",
-      "11048",
-      "11049"
+      "11055",
+      "South Wing West Side",
+      "West Side Cafe Area"
     ]
   },
   {
@@ -1015,9 +875,9 @@
     "xPosition": "162px",
     "yPosition": "1253px",
     "edges": [
-      "11045",
       "1413",
-      "1S4"
+      "1S4",
+      "South Wing West Side"
     ]
   },
   {
@@ -1038,31 +898,32 @@
     "xPosition": "196px",
     "yPosition": "1279px",
     "edges": [
-      "11045",
-      "1411"
+      "1411",
+      "South Wing West Side"
     ]
   },
   {
     "name": "11049",
     "type": "Path",
     "floor": "1",
-    "xPosition": "281px",
-    "yPosition": "1249px",
+    "xPosition": "280px",
+    "yPosition": "1250px",
     "edges": [
-      "11045",
-      "11050"
+      "11050",
+      "11041",
+      "South Wing West Side"
     ]
   },
   {
     "name": "11050",
     "type": "Path",
     "floor": "1",
-    "xPosition": "441px",
-    "yPosition": "1248px",
+    "xPosition": "437px",
+    "yPosition": "1251px",
     "edges": [
       "11049",
       "11051",
-      "11032"
+      "South Wing Center"
     ]
   },
   {
@@ -1153,6 +1014,155 @@
       "11024",
       "1404",
       "1S2"
+    ]
+  },
+  {
+    "name": "North Hallway",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "377px",
+    "yPosition": "929px",
+    "edges": [
+      "11008",
+      "1400A",
+      "Main Hall Center"
+    ]
+  },
+  {
+    "name": "South East Branch Hallway",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "749px",
+    "yPosition": "1144px",
+    "edges": [
+      "11024",
+      "Main Hall East Side"
+    ]
+  },
+  {
+    "name": "South Middle Branch Hallway",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "461px",
+    "yPosition": "1082px",
+    "edges": [
+      "11034",
+      "Main Hall Center"
+    ]
+  },
+  {
+    "name": "South Wing East Side",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "721px",
+    "yPosition": "1251px",
+    "edges": [
+      "11028",
+      "11029",
+      "1401",
+      "11026"
+    ]
+  },
+  {
+    "name": "South Wing Center",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "466px",
+    "yPosition": "1250px",
+    "edges": [
+      "11050",
+      "1401",
+      "11033",
+      "11034"
+    ]
+  },
+  {
+    "name": "South Wing West Side",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "199px",
+    "yPosition": "1250px",
+    "edges": [
+      "11046",
+      "11048",
+      "11049",
+      "11044"
+    ]
+  },
+  {
+    "name": "West Side Cafe Area",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "204px",
+    "yPosition": "1118px",
+    "edges": [
+      "1418",
+      "11044",
+      "1400D",
+      "Main Hall West Side"
+    ]
+  },
+  {
+    "name": "North Hallway Center",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "385px",
+    "yPosition": "599px",
+    "edges": [
+      "11011",
+      "11009",
+      "11005"
+    ]
+  },
+  {
+    "name": "North Hallway by North Entrance",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "371px",
+    "yPosition": "261px",
+    "edges": [
+      "11001",
+      "1400N",
+      "1400B"
+    ]
+  },
+  {
+    "name": "Main Hall East Side",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "748px",
+    "yPosition": "1039px",
+    "edges": [
+      "Main Hall Center",
+      "South East Branch Hallway",
+      "1400E",
+      "11038"
+    ]
+  },
+  {
+    "name": "Main Hall Center",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "432px",
+    "yPosition": "1003px",
+    "edges": [
+      "Main Hall West Side",
+      "North Hallway",
+      "South Middle Branch Hallway",
+      "Main Hall East Side"
+    ]
+  },
+  {
+    "name": "Main Hall West Side",
+    "type": "Checkpoint",
+    "floor": "1",
+    "xPosition": "207px",
+    "yPosition": "1022px",
+    "edges": [
+      "1400W",
+      "E1",
+      "West Side Cafe Area",
+      "Main Hall Center"
     ]
   }
 ]

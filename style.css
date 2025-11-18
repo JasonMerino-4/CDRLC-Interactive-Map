@@ -28,7 +28,7 @@ main {
     background-image: url("./images/CDRLC.jpg");
     background-color: #777777;
     background-blend-mode: multiply;
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -223,6 +223,10 @@ h3 {
 
 #stairs_legend_icon {
     background-color: #9C27B0;
+}
+
+#miscroom_legend_icon {
+    background-color: rgb(2, 107, 204);
 }
 
 #elevator_legend_icon {
