@@ -138,8 +138,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 const pinObj = pinManagment.pinMap.get(name);
                 if (!pinObj) return;
 
-                // visual feedback in the list is optional; the key is map focus+zoom:
-                focusAndZoomPin(pinObj, 125); // tweak desired zoom % if you want
+                
+                centerOnPin(pinObj);
+
+
+                //focusAndZoomPin(pinObj, 125); // centers AND zooms to 125% on pin
 
                 // optional: highlight the clicked row
                 roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
@@ -297,11 +300,17 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyAmenityFilter() {
         // Show/hide pins based on multi-select set
         pinManagment.pinMap.forEach((p) => {
-            const match = activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType);
-            p.pinElement.style.display = match ? "" : "none";
-        });
-        
+            const isCheckpoint = (p.pinType === "Checkpoint");
+            const noFiltersSelected = (activeFilterTypes.size === 0);
+            const matchesFilter = activeFilterTypes.has(p.pinType);
 
+            if (isCheckpoint || noFiltersSelected || matchesFilter) {
+                p.pinElement.style.display = ""; // display pin
+            } else {
+                // hide pin
+                p.pinElement.style.display = "none"; // hide pin
+            }
+        });
         // If current focus is hidden by the filter, clear selection & path
         if (pinManagment.focusedPin && pinManagment.focusedPin.pinElement.style.display === "none") {
             document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
@@ -313,10 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Update list to reflect the same filter
         updateRoomList();
 
-        // Clear button visibility
-        if (amenityClearBtn) {
-            amenityClearBtn.hidden = activeFilterTypes.size === 0;
-        }
+
 
         // Button active state (visual)
         amenityButtons.forEach(btn => {
@@ -383,9 +389,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     btn.style.display = "none";
                 }
             });
+
+            
         });
     }
     // -------------------------------------------------------------------------
+
+    // event handler for pressing enter in search bar
+    roomSearchInput.addEventListener("keydown", function (e) {
+
+        if (e.key === "Enter") {
+            
+            e.preventDefault();
+            // Find the first room that is visible
+            const firstRoom = Array.from(document.querySelectorAll("#room_list .roomlist-item")).find(btn => btn.style.display == "block");
+
+            if (!firstRoom)
+                return;
+
+            firstRoom.click();
+        }
+    });
 
 
     document.addEventListener("click", (e) => {
