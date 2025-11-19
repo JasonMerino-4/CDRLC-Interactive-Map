@@ -14,4 +14,14 @@
         background-color: white;
         background-image: none;
     }
+
+    #left_nav_bar {
+        width: 90%;
+        margin: 8px auto;
+    }
+
+    #text_directions_wrapper{
+        width: 90%;
+        margin: 8px auto;    
+    }
 }

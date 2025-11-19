@@ -31,7 +31,8 @@
         <div id="studyroom_appointments_wrapper">
             <h3>CDRLC Studyrooms</h3>
             <p>The CDRLC offers 5 study rooms for students to use by appointment. Appontments can be scheduled here at
-                <a href="https://sites.google.com/uic.edu/uic-cdrlc-booking-for-students/home">CDRLC Booking</a></p>
+                <a href="https://sites.google.com/uic.edu/uic-cdrlc-booking-for-students/home">CDRLC Booking</a>
+            </p>
         </div>
         <div id="instructions_wrapper">
             <h3>How to Use the CDLRC Map</h3>
@@ -52,29 +53,31 @@
                 </div>
             </dl>
         </div>
-        <div class="clean_box" id="text_directions_wrapper">
-                <p1>Text Directions</p1>
-                <ol id="text_directions_list">
-                    <li>No directions available</li>
-                </ol>
-            </div>
         <div id="navbar_map_wrapper">
-            <div class="clean_box" id="left_nav_bar">
-                <div id="find_room_block" class="find-room">
-                    <h3 class="find-room__title">Find a Room</h3>
-                    <input type="text" id="room_search" placeholder="Search by room number or name" />
-                </div>
-                <div id="amenity_filter" class="amenity-box">
-                    <h3 class="mb-3">Quick Filters</h3>
-                    <div class="quick-filters">
-                        <button class="amenity-btn" data-type="Classroom">Classrooms</button>
-                        <button class="amenity-btn" data-type="Bathroom">Restrooms</button>
-                        <button class="amenity-btn" data-type="Study Room">Study Rooms</button>
-                        <button class="amenity-btn" data-type="Entrance">Entrances</button>
-                        <button class="amenity-btn" data-type="Stairs">Stairs</button>
-                        <button class="amenity-btn" data-type="Elevators">Elevators</button>
+            <div id="directions_navbar_wrapper">
+                <div class="clean_box" id="left_nav_bar">
+                    <div id="find_room_block" class="find-room">
+                        <h3 class="find-room__title">Find a Room</h3>
+                        <input type="text" id="room_search" placeholder="Search by room number or name" />
                     </div>
-                    <button id="amenity_clear" class="amenity-clear" hidden>Clear All Filters</button>
+                    <div id="amenity_filter" class="amenity-box">
+                        <h3 class="mb-3">Quick Filters</h3>
+                        <div class="quick-filters">
+                            <button class="amenity-btn" data-type="Classroom">Classrooms</button>
+                            <button class="amenity-btn" data-type="Bathroom">Restrooms</button>
+                            <button class="amenity-btn" data-type="Study Room">Study Rooms</button>
+                            <button class="amenity-btn" data-type="Entrance">Entrances</button>
+                            <button class="amenity-btn" data-type="Stairs">Stairs</button>
+                            <button class="amenity-btn" data-type="Elevators">Elevators</button>
+                        </div>
+                        <button id="amenity_clear" class="amenity-clear" hidden>Clear All Filters</button>
+                    </div>
+                </div>
+                <div class="clean_box" id="text_directions_wrapper">
+                    <p1>Relative Directions</p1>
+                    <ol id="text_directions_list">
+                        <li>No directions available</li>
+                    </ol>
                 </div>
             </div>
             <div class="clean_box" id="floorplan_legend_container">
