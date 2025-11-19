@@ -87,16 +87,21 @@ footer {
 
 .floorButton {
     color: black;
-    border: 1px solid #DCDCDE;
+    border: 1px solid orangered;
     border-radius: 16px;
     height: 32px;
     flex: 1;
+    background-color: white;
+}
+
+.floorButton:hover {
+    background-color: #FFE5B4;
 }
 
 .floorButtonSelected {
-    color: white;
-    border: 1px solid black;
-    background-color: black;
+    color: black;
+    border: 1px solid orangered;
+    background-color: #FFE5B4;
 }
 
 #left_nav_bar {
