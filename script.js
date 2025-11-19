@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let mapPathsSVG = document.getElementById("map_paths");
     let mapImage = document.getElementById("map_floorplan");
 
+    let currentFloor = 1; // default floor
+
     // ===== NEW (FILTER STATE & ELEMENTS) — START =====
     const amenityButtons   = document.querySelectorAll(".amenity-btn");
     const amenityClearBtn  = document.getElementById("amenity_clear");
@@ -298,18 +300,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ===== NEW (FILTER LOGIC) — START =====
     function applyAmenityFilter() {
-        // Show/hide pins based on multi-select set
+        // Show/hide pins based on FLOOR + filters
         pinManagment.pinMap.forEach((p) => {
-            const isCheckpoint = (p.pinType === "Checkpoint");
-            const noFiltersSelected = (activeFilterTypes.size === 0);
-            const matchesFilter = activeFilterTypes.has(p.pinType);
+            const onCurrentFloor = String(p.pinFloor) === String(currentFloor);
+            const noFilters      = activeFilterTypes.size === 0;
+            const matchesFilter  = activeFilterTypes.has(p.pinType);
+            const isCheckpoint   = p.pinType === "Checkpoint";
 
-            if (isCheckpoint || noFiltersSelected || matchesFilter) {
-                p.pinElement.style.display = ""; // display pin
-            } else {
-                // hide pin
-                p.pinElement.style.display = "none"; // hide pin
-            }
+            const shouldShow = onCurrentFloor && (noFilters || matchesFilter || isCheckpoint);
+
+            p.pinElement.style.display = shouldShow ? "" : "none";
         });
         // If current focus is hidden by the filter, clear selection & path
         if (pinManagment.focusedPin && pinManagment.focusedPin.pinElement.style.display === "none") {
@@ -577,6 +577,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function loadFloorData(){
         const floorURLs = [
             ".\\Floordata\\floor1.json",
+            ".\\Floordata\\floor2.json",
+            ".\\Floordata\\floor3.json",
+            ".\\Floordata\\floor4.json",
         ]
 
         floorURLs.forEach((url) => {
@@ -690,7 +693,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pinManagment.scalePins(currentZoom, newZoom);
         drawPaths();
     })
-    let currentFloor = 1; // default floor
+    
 
 const floorButtons = document.querySelectorAll("#floor_buttons button");
 
@@ -710,6 +713,8 @@ function switchFloor(floorNumber) {
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
     fetchData(`./Floordata/floor${floorNumber}.json`);
+
+    applyAmenityFilter();
 }
 
 })
