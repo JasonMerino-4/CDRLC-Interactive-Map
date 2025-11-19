@@ -391,7 +391,8 @@
     "xPosition": "208px",
     "yPosition": "1231px",
     "edges": [
-      "11024"
+      "11024",
+      "Southwest CheckPoint"
     ]
   },
   {
@@ -491,7 +492,8 @@
     "xPosition": "741px",
     "yPosition": "1251px",
     "edges": [
-      "11036"
+      "11036",
+      "Southeast CheckPoint"
     ]
   },
   {
@@ -614,7 +616,8 @@
     "edges": [
       "11041",
       "11040",
-      "11046"
+      "11046",
+      "East CheckPoint"
     ]
   },
   {
@@ -626,7 +629,8 @@
     "edges": [
       "11001",
       "11002",
-      "11022"
+      "11022",
+      "West CheckPoint"
     ]
   },
   {
@@ -670,7 +674,8 @@
     "edges": [
       "11036",
       "Stair3",
-      "11045"
+      "11045",
+      "Southeast CheckPoint"
     ]
   },
   {
@@ -769,7 +774,8 @@
       "11009",
       "3440",
       "3445",
-      "3438"
+      "3438",
+      "North CheckPoint"
     ]
   },
   {
@@ -782,7 +788,8 @@
       "11008",
       "11010",
       "3442",
-      "3500"
+      "3500",
+      "North CheckPoint"
     ]
   },
   {
@@ -946,7 +953,8 @@
       "3400B",
       "11023",
       "3428(2)",
-      "11039"
+      "11039",
+      "West CheckPoint"
     ]
   },
   {
@@ -958,21 +966,23 @@
     "edges": [
       "11022",
       "3426",
-      "11024"
+      "11024",
+      "Southwest CheckPoint"
     ]
   },
   {
     "name": "11024",
     "type": "Path",
     "floor": "3",
-    "xPosition": "190px",
-    "yPosition": "1217px",
+    "xPosition": "179px",
+    "yPosition": "1223px",
     "edges": [
       "11023",
       "11025",
       "3428",
       "3431",
-      "11026"
+      "11026",
+      "Southwest CheckPoint"
     ]
   },
   {
@@ -996,7 +1006,8 @@
     "edges": [
       "11024",
       "3429",
-      "11027"
+      "11027",
+      "Southwest CheckPoint"
     ]
   },
   {
@@ -1117,14 +1128,15 @@
     "name": "11036",
     "type": "Path",
     "floor": "3",
-    "xPosition": "742px",
-    "yPosition": "1225px",
+    "xPosition": "725px",
+    "yPosition": "1226px",
     "edges": [
       "11035",
       "11044",
       "3409",
       "3403",
-      "11037"
+      "11037",
+      "Southeast CheckPoint"
     ]
   },
   {
@@ -1136,7 +1148,8 @@
     "edges": [
       "11036",
       "3407",
-      "11038"
+      "11038",
+      "Southeast CheckPoint"
     ]
   },
   {
@@ -1161,7 +1174,8 @@
     "edges": [
       "11022",
       "Bathroom1",
-      "11040"
+      "11040",
+      "West CheckPoint"
     ]
   },
   {
@@ -1246,7 +1260,8 @@
       "3400A",
       "11043",
       "11045",
-      "3404"
+      "3404",
+      "East CheckPoint"
     ]
   },
   {
@@ -1257,6 +1272,66 @@
     "yPosition": "635px",
     "edges": [
       "3500"
+    ]
+  },
+  {
+    "name": "Southwest CheckPoint",
+    "type": "Checkpoint",
+    "floor": "3",
+    "xPosition": "198px",
+    "yPosition": "1215px",
+    "edges": [
+      "11023",
+      "11024",
+      "11026",
+      "3431"
+    ]
+  },
+  {
+    "name": "Southeast CheckPoint",
+    "type": "Checkpoint",
+    "floor": "3",
+    "xPosition": "749px",
+    "yPosition": "1229px",
+    "edges": [
+      "11036",
+      "3403",
+      "3409",
+      "11037"
+    ]
+  },
+  {
+    "name": "East CheckPoint",
+    "type": "Checkpoint",
+    "floor": "3",
+    "xPosition": "689px",
+    "yPosition": "1081px",
+    "edges": [
+      "11046",
+      "3400A"
+    ]
+  },
+  {
+    "name": "West CheckPoint",
+    "type": "Checkpoint",
+    "floor": "3",
+    "xPosition": "213px",
+    "yPosition": "1052px",
+    "edges": [
+      "11022",
+      "3400B",
+      "11039"
+    ]
+  },
+  {
+    "name": "North CheckPoint",
+    "type": "Checkpoint",
+    "floor": "3",
+    "xPosition": "240px",
+    "yPosition": "688px",
+    "edges": [
+      "11009",
+      "11008"
     ]
   }
 ]
