@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const activeFilterTypes = new Set();
     // ===== NEW (FILTER STATE & ELEMENTS) — END =====
 
+    // ---------- GLOBAL MASTER LIST (all floors) ----------
+    const allPins = []; // contains raw pin objects from JSON for all floors
 
     class pin {
         constructor(name, type, floor, xPosition, yPosition){
@@ -136,15 +138,32 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!row) return;
                 const name = row.getAttribute("data-name");
                 const pinObj = pinManagment.pinMap.get(name);
-                if (!pinObj) return;
+                if (!pinObj) {
+                    // room not on current floor -> find in allPins and switch floor
+                    const targetRaw = allPins.find(p => p.name === name);
+                    if (targetRaw) {
+                        const targetFloor = parseInt(targetRaw.floor);
+                        switchFloor(targetFloor).then(() => {
+                            const newPin = pinManagment.pinMap.get(name);
+                            if (newPin) {
+                                // select + center
+                                document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+                                newPin.pinElement.classList.add("selected");
+                                pinManagment.focusedPin = newPin;
+                                centerOnPin(newPin);
+
+                                // optional: highlight the clicked row
+                                roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
+                                row.classList.add("is-active");
+                            }
+                        }).catch(console.error);
+                    }
+                    return;
+                }
 
                 
                 centerOnPin(pinObj);
 
-
-                //focusAndZoomPin(pinObj, 125); // centers AND zooms to 125% on pin
-
-                // optional: highlight the clicked row
                 roomListContainer.querySelectorAll(".roomlist-item.is-active").forEach(el => el.classList.remove("is-active"));
                 row.classList.add("is-active");
             });
@@ -154,19 +173,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // ===== CHANGED (FILTERED ROOMS FOR LIST) — START =====
-        const rooms = Array.from(pinManagment.pinMap.values())
-        .filter(p => p.pinType && p.pinType !== "Path" && p.pinType !== "Checkpoint")
-        .filter(p => activeFilterTypes.size === 0 || activeFilterTypes.has(p.pinType))
-        .sort((a, b) => a.pinName.localeCompare(b.pinName, undefined, { numeric: true }));
+        // Use allPins so list contains rooms from every floor
+        const rooms = allPins
+        .filter(p => p.type && p.type !== "Path" && p.type !== "Checkpoint")
+        .filter(p => activeFilterTypes.size === 0 || activeFilterTypes.has(p.type))
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
         // ===== CHANGED (FILTERED ROOMS FOR LIST) — END =====
 
         for (const pin of rooms) {
             const btn = document.createElement("button");
             // ---------- CHANGED: structure + styling to match the screenshot ----------
             btn.className = "roomlist-item";
-            btn.dataset.name = pin.pinName;
+            btn.dataset.name = pin.name;
 
-            const chipText = String(pin.pinType || "").toLowerCase();
+            const chipText = String(pin.type || "").toLowerCase();
 
 
             // layout: content on left, chip+floor on right
@@ -174,11 +194,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="room-item">
                     <div class="room-item__left">
                     <span class="material-symbols-outlined" aria-hidden="true">location_on</span>
-                    <strong class="room-item__title">${pin.pinName}</strong>
+                    <strong class="room-item__title">${pin.name}</strong>
                     </div>
                     <div class="room-item__right">
                     <span class="room-item__chip">${chipText}</span>
-                    <span class="room-item__floor">Floor ${pin.pinFloor}</span>
+                    <span class="room-item__floor">Floor ${pin.floor}</span>
                     </div>
                 </div>
                 `;
@@ -191,14 +211,37 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.addEventListener("click", () => {
                 const name = btn.dataset.name;
                 const pinObj = pinManagment.pinMap.get(name);
-                if (!pinObj) return;
+                if (!pinObj) {
+                    // the room is on another floor so it switches floors before focusing
+                    const target = allPins.find(p => p.name === name);
+                    if (target) {
+                        switchFloor(parseInt(target.floor)).then(() => {
+                            const newPin = pinManagment.pinMap.get(name);
+                            if (newPin) {
+                                // remove all selections
+                                document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+                                roomListContainer.querySelectorAll(".roomlist-item.is-active")
+                                .forEach(el => el.classList.remove("is-active"));
 
-                // remove all selections
+                                // select this one
+                                newPin.pinElement.classList.add("selected");
+                                pinManagment.focusedPin = newPin;
+                                pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
+                                drawPaths();
+
+                                // mark active
+                                btn.classList.add("is-active");
+                            }
+                        }).catch(console.error);
+                    }
+                    return;
+                }
+
+                // the room is on current floor so behave normally
                 document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
                 roomListContainer.querySelectorAll(".roomlist-item.is-active")
                 .forEach(el => el.classList.remove("is-active"));
 
-                // select this one
                 pinObj.pinElement.classList.add("selected");
                 pinManagment.focusedPin = pinObj;
                 pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
@@ -594,43 +637,98 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    function loadFloorData(){
-        const floorURLs = [
-            ".\\Floordata\\floor1.json",
-        ]
+    // preloads the floors
+    const totalFloors = 4;
+    let currentFloor = 1;
 
-        floorURLs.forEach((url) => {
-            fetchData(url);
-        })
-    }
+    // preloads all floor JSONs into allPins
+    function preloadAllFloors() {
+        const urls = [];
+        for (let i = 1; i <= totalFloors; i++) {
+            // use consistent relative path (same as your project structure)
+            urls.push(`./Floordata/floor${i}.json`);
+        }
 
-    async function fetchData(url) {
-        pinManagment.clearMap();
-
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                data.forEach((pinObj) => {
-                    pinManagment.addPin(pinObj.name, pinObj.type, pinObj.floor, pinObj.xPosition, pinObj.yPosition);
-                })
-
-                data.forEach((pinObj) => {
-                    pinManagment.addEdges(pinObj.name, pinObj.edges);
-                })
-
-                //drawPaths();
-
-              
-                updateRoomList();
-                applyAmenityFilter();
-
-                drawPaths();
-                
+        // fetch all in parallel
+        return Promise.all(urls.map(url =>
+            fetch(url)
+            .then(r => {
+                if (!r.ok) throw new Error(`Failed to load ${url}`);
+                return r.json();
             })
-            .catch((error) => console.error("Error loading JSON file", error));
+            .catch(err => {
+                console.error("Error fetching", url, err);
+                return []; // return empty array so other floors still load
+            })
+        )).then((arraysOfPins) => {
+            arraysOfPins.forEach(arr => {
+                arr.forEach(pinObj => {
+                    if (!allPins.some(p => p.name === pinObj.name)) {
+                        allPins.push(pinObj);
+                    }
+                })
+            });
+            return allPins;
+        });
     }
 
-    loadFloorData();
+    function fetchData(url) {
+        return new Promise((resolve, reject) => {
+            pinManagment.clearMap();
+
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then((data) => {
+                    data.forEach((pinObj) => {
+                        pinManagment.addPin(pinObj.name, pinObj.type, pinObj.floor, pinObj.xPosition, pinObj.yPosition);
+                    })
+
+                    data.forEach((pinObj) => {
+                        pinManagment.addEdges(pinObj.name, pinObj.edges);
+                    })
+
+                  
+                    updateRoomList();
+                    applyAmenityFilter();
+
+                    drawPaths();
+
+                    resolve();
+                    
+                })
+                .catch((error) => {
+                    console.error("Error loading JSON file", error);
+                    reject(error);
+                });
+        });
+    }
+
+    // preloads everything, then loads the first floor
+    function initialLoad() {
+        const floorURLs = [];
+        for (let i = 1; i <= totalFloors; i++) {
+            floorURLs.push(`./Floordata/floor${i}.json`);
+        }
+
+        preloadAllFloors()
+        .then(() => {
+            updateRoomList();
+            // load current floor pins into the map
+            mapImage.src = `Floorplans/floor${currentFloor}.svg`;
+            return fetchData(`./Floordata/floor${currentFloor}.json`);
+        })
+        .catch(err => {
+            console.error("Preload failed", err);
+            // still try to load the first floor
+            mapImage.src = `Floorplans/floor${currentFloor}.svg`;
+            return fetchData(`./Floordata/floor${currentFloor}.json`);
+        });
+    }
+
+    initialLoad();
 
     function addLine(pin1, pin2){
         let newLine = document.createElementNS("http://www.w3.org/2000/svg", "line")
@@ -710,7 +808,6 @@ document.addEventListener("DOMContentLoaded", function () {
         pinManagment.scalePins(currentZoom, newZoom);
         drawPaths();
     })
-    let currentFloor = 1; // default floor
 
 const floorButtons = document.querySelectorAll("#floor_buttons button");
 
@@ -729,7 +826,8 @@ function switchFloor(floorNumber) {
 
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
-    fetchData(`./Floordata/floor${floorNumber}.json`);
+    return fetchData(`./Floordata/floor${floorNumber}.json`);
 }
 
 })
+
