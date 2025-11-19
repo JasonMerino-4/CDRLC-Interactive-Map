@@ -69,6 +69,16 @@ footer {
     flex-wrap: wrap;
 }
 
+#directions_navbar_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#text_directions_wrapper {
+    padding: 16px;
+}
+
 #floor_buttons {
     margin: 0 16px;
     display: flex;

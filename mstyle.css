@@ -4,7 +4,7 @@
     }
 
     #map_wrapper{
-        margin: 0px 0px;
+        margin: 2px 2px;
         border-radius: 0px;
     }
 
@@ -13,5 +13,15 @@
         height: auto;
         background-color: white;
         background-image: none;
+    }
+
+    #left_nav_bar {
+        width: 90%;
+        margin: 8px auto;
+    }
+
+    #text_directions_wrapper{
+        width: 90%;
+        margin: 8px auto;    
     }
 }

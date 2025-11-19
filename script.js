@@ -491,19 +491,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         },
 
-        //only need x ratio for this to work
         scalePins: function(oldImageX, newImageX){
-            let ratio = newImageX/oldImageX;
-            
-            this.pinMap.forEach((pinObj, name) => {
-                pinObj.pinElement.style.width = (parseInt(pinObj.pinElement.offsetWidth) * ratio).toString() + "px";
-                pinObj.pinElement.style.height = (parseInt(pinObj.pinElement.offsetHeight) * ratio).toString() + "px";
-                pinObj.pinElement.style.top = (parseInt(pinObj.pinElement.style.top) * ratio) + "px";
-                pinObj.pinElement.style.left = (parseInt(pinObj.pinElement.style.left) * ratio) + "px";
+            let ratio = newImageX / oldImageX;
+
+            this.pinMap.forEach((pinObj) => {
+
+            // scales the pin container
+            pinObj.pinElement.style.width  = (parseFloat(pinObj.pinElement.offsetWidth)  * ratio) + "px";
+            pinObj.pinElement.style.height = (parseFloat(pinObj.pinElement.offsetHeight) * ratio) + "px";
+
+            // scales position
+            pinObj.pinElement.style.top  = (parseFloat(pinObj.pinElement.style.top)  * ratio) + "px";
+            pinObj.pinElement.style.left = (parseFloat(pinObj.pinElement.style.left) * ratio) + "px";
+
+            // scales icon
+            const icon = pinObj.pinElement.querySelector(".pin-icon");
+            if (icon) {
+                const w = parseFloat(window.getComputedStyle(icon).width);
+                const h = parseFloat(window.getComputedStyle(icon).height);
+                icon.style.width  = (w * ratio) + "px";
+                icon.style.height = (h * ratio) + "px";
+            }
+
+            // scales label text size
+            const label = pinObj.pinElement.querySelector(".pin-label");
+            if (label) {
+                const currentFont = parseFloat(window.getComputedStyle(label).fontSize);
+                label.style.fontSize = (currentFont * ratio) + "px";
+                }
             });
 
             drawPaths();
         },
+
 
         findPath(startingPin, endPin) {
             let Q = new Set();
