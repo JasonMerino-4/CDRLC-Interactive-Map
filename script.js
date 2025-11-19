@@ -810,14 +810,21 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
 const floorButtons = document.querySelectorAll("#floor_buttons button");
+let activeFloorButton = document.querySelector(".floorButtonSelected");
 
 floorButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const selectedFloor = parseInt(btn.dataset.floor);
         if (selectedFloor === currentFloor) return;
-
         currentFloor = selectedFloor;
         switchFloor(currentFloor);
+        // Remove active class from previous
+        if (activeFloorButton) {
+            activeFloorButton.classList.remove("floorButtonSelected");
+        }
+        // Add active class to clicked button
+        btn.classList.add("floorButtonSelected");
+        activeFloorButton = btn;
     });
 });
 
