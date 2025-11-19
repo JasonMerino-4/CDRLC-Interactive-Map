@@ -195,6 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const pinObj = pinManagment.pinMap.get(name);
                 if (!pinObj) return;
 
+                const targetFloor = parseInt(pinObj.pinFloor, 10);
+                if (targetFloor !== currentFloor) {
+                    currentFloor = targetFloor;
+                    switchFloor(currentFloor);
+                }
+
                 // remove all selections
                 document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
                 roomListContainer.querySelectorAll(".roomlist-item.is-active")
@@ -300,29 +306,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ===== NEW (FILTER LOGIC) — START =====
     function applyAmenityFilter() {
-        // Show/hide pins based on FLOOR + filters
+        // Show/hide pins based on FLOOR + amenity filters
         pinManagment.pinMap.forEach((p) => {
             const onCurrentFloor = String(p.pinFloor) === String(currentFloor);
             const noFilters      = activeFilterTypes.size === 0;
             const matchesFilter  = activeFilterTypes.has(p.pinType);
-            const isCheckpoint   = p.pinType === "Checkpoint";
+            const isCheckpoint   = p.pinType === "Checkpoint"; // keep this if you still always want checkpoints shown
 
-            const shouldShow = onCurrentFloor && (noFilters || matchesFilter || isCheckpoint);
+            const visibleByFilter = noFilters || matchesFilter || isCheckpoint;
+            const shouldShow = onCurrentFloor && visibleByFilter;
 
             p.pinElement.style.display = shouldShow ? "" : "none";
         });
+
         // If current focus is hidden by the filter, clear selection & path
-        if (pinManagment.focusedPin && pinManagment.focusedPin.pinElement.style.display === "none") {
-            document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
+        if (pinManagment.focusedPin &&
+            pinManagment.focusedPin.pinElement.style.display === "none") {
+
+            document.querySelectorAll(".pin.selected").forEach(el =>
+                el.classList.remove("selected")
+            );
             pinManagment.focusedPin = null;
             pinManagment.currentPins.clear();
             clearMapPaths();
         }
 
-        // Update list to reflect the same filter
         updateRoomList();
-
-
 
         // Button active state (visual)
         amenityButtons.forEach(btn => {
@@ -334,9 +343,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        
         drawPaths();
     }
+
 
     // Buttons
     if (amenityButtons && amenityButtons.length) {
@@ -608,7 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchData(url) {
-        pinManagment.clearMap();
+        //pinManagment.clearMap();
 
         fetch(url)
             .then((response) => response.json())
@@ -715,26 +724,30 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
 
-const floorButtons = document.querySelectorAll("#floor_buttons button");
+    const floorButtons = document.querySelectorAll("#floor_buttons button");
 
-floorButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const selectedFloor = parseInt(btn.dataset.floor);
-        if (selectedFloor === currentFloor) return;
+    floorButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const selectedFloor = parseInt(btn.dataset.floor);
+            if (selectedFloor === currentFloor) return;
 
-        currentFloor = selectedFloor;
-        switchFloor(currentFloor);
+            currentFloor = selectedFloor;
+            switchFloor(currentFloor);
+        });
     });
-});
 
-function switchFloor(floorNumber) {
-    pinManagment.clearMap();
+    function switchFloor(floorNumber) {
+        currentFloor = floorNumber;
 
-    mapImage.src = `Floorplans/floor${floorNumber}.svg`;
+        mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
-    fetchData(`./Floordata/floor${floorNumber}.json`);
+        const mapTitle = document.getElementById("map_title");
+        if (mapTitle) {
+            mapTitle.textContent = `Floor ${floorNumber}`;
+        }
 
-    applyAmenityFilter();
-}
+        // Re-apply filters so only pins for this floor are visible
+        applyAmenityFilter();
+    }
 
 })
