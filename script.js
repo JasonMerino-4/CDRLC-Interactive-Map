@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const activeFilterTypes = new Set();
     // ===== NEW (FILTER STATE & ELEMENTS) — END =====
 
-    // ---------- GLOBAL MASTER LIST (all floors) ----------
-    const allPins = []; // contains raw pin objects from JSON for all floors
+    const allPins = [];
 
     class pin {
         constructor(name, type, floor, xPosition, yPosition){
@@ -57,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
             label.innerText = this.pinName;
             newPinElement.appendChild(label);
 
-            // Click event for selection
             newPinElement.addEventListener("click", (e) => {
                 e.stopPropagation();
 
@@ -66,11 +64,61 @@ document.addEventListener("DOMContentLoaded", function () {
                     pin.classList.remove("selected");
                 });
 
-                // Add "selected" to this pin
+                // Select this one
                 newPinElement.classList.add("selected");
 
                 pinManagment.focusedPin = this;
+
+                // starting pin is replaced when clicked
+                pinManagment.startingPinName = this.pinName;
+
+                // Optional: immediately draw a path FROM this pin TO itself (clears old path)
+                pinManagment.findPath(pinManagment.startingPinName, this.pinName);
+                drawPaths();
             });
+            // Right click when on desktop
+            newPinElement.addEventListener("contextmenu", (e) => {
+                e.preventDefault();
+                setDestinationPin(this);
+            });
+
+            // For long press on mobile
+            let pressTimer = null;
+
+            newPinElement.addEventListener("touchstart", () => {
+                pressTimer = setTimeout(() => {
+                    setDestinationPin(this);
+                }, 600);
+            });
+
+            newPinElement.addEventListener("touchend", () => {
+                clearTimeout(pressTimer);
+            });
+
+            newPinElement.addEventListener("touchmove", () => {
+                clearTimeout(pressTimer);
+            });
+
+            function setDestinationPin(pinObj) {
+
+                // Clears the previous selection
+                document.querySelectorAll(".pin.destination").forEach(p =>
+                    p.classList.remove("destination")
+                );
+
+                // Marks pin as destination
+                pinObj.pinElement.classList.add("destination");
+
+                // Creates route
+                pinManagment.focusedPin = pinObj;
+
+                pinManagment.findPath(
+                    pinManagment.startingPinName,
+                    pinObj.pinName
+                );
+
+                drawPaths();
+            }
 
             return newPinElement;
         }
@@ -226,7 +274,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 // select this one
                                 newPin.pinElement.classList.add("selected");
                                 pinManagment.focusedPin = newPin;
-                                pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
+                                pinManagment.findPath(pinManagment.startingPinName, pinManagment.focusedPin.pinName);
+
                                 drawPaths();
 
                                 // mark active
@@ -244,7 +293,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 pinObj.pinElement.classList.add("selected");
                 pinManagment.focusedPin = pinObj;
-                pinManagment.findPath("1400E", pinManagment.focusedPin.pinName);
+                pinManagment.findPath(pinManagment.startingPinName, pinManagment.focusedPin.pinName);
+
                 drawPaths();
 
                 // mark active
@@ -469,7 +519,8 @@ document.addEventListener("DOMContentLoaded", function () {
         pinMap: new Map(),
         currentPins: new Set(),
         focusedPin: null,
-
+        
+        startingPinName: "1400E",
         clearMap: function(){
             this.pinMap.forEach((pinObj, name) => {
                 this.removePin(pinObj);
