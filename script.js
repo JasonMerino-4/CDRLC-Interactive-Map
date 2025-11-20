@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // starting pin is replaced when clicked
                 pinManagment.startingPinName = this.pinName;
 
-                // Optional: immediately draw a path FROM this pin TO itself (clears old path)
                 pinManagment.findPath(pinManagment.startingPinName, this.pinName);
                 drawPaths();
             });
