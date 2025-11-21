@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "Entrance": return "icons/entrance.svg";
                 case "Stairs": return "icons/stairs.svg";
                 case "Elevators": return "icons/elevator.svg";
-                case "Study Room": return "icons/studyroom.svg";
+                case "Study Room": return "icons/studyrooms.svg";
                 case "Bathroom": return "icons/bathroom.svg";
                 case "Path":
                 case "Hallway":
