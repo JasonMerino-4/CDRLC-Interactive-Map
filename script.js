@@ -310,35 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
             
             }
     }
-    // ---------------------------------------------------------------
-
-    // ========================= NEW: zoom + focus helpers =========================
-    function getZoomNumberEl() {
-        return document.getElementById("map_zoom_number");
-    }
-
-    function getCurrentZoomPercent() {
-    const el = getZoomNumberEl();
-        return el ? parseInt(el.textContent) || 100 : 100;
-    }
-
-    /** Set absolute zoom % exactly like your +/- buttons do */
-    function setZoomPercent(targetPercent) {
-        const zoomNumber = getZoomNumberEl();
-        if (!zoomNumber) return;
-
-        const currentPercent = getCurrentZoomPercent();
-        if (targetPercent === currentPercent) return;
-
-        const currentWidth = 1000 * (currentPercent / 100);
-        const newWidth = 1000 * (targetPercent / 100);
-
-        zoomNumber.textContent = `${targetPercent}%`;
-        mapImage.style.width = `${newWidth}px`;
-        fixImageSVG();
-        pinManagment.scalePins(currentWidth, newWidth); // this already calls drawPaths()
-        
-    }
 
     /** Center the scroll viewport on a pin (after zoom is applied) */
     function centerOnPin(pinObj) {
@@ -368,25 +339,6 @@ document.addEventListener("DOMContentLoaded", function () {
             mapWrapper.scrollTop  = targetTop;
         }
     }
-
-    /** Focus: highlight the pin, zoom (if needed), then center it */
-    function focusAndZoomPin(pinObj, desiredPercent) {
-        if (!pinObj) return;
-
-        // Select this pin (reuse your existing selected class + focusedPin)
-        document.querySelectorAll(".pin.selected").forEach(el => el.classList.remove("selected"));
-        pinObj.pinElement.classList.add("selected");
-        pinManagment.focusedPin = pinObj;
-
-        // Zoom if below desired level; otherwise keep current zoom
-        const current = getCurrentZoomPercent();
-        const target = Math.max(current, desiredPercent);
-        setZoomPercent(target);
-
-        // Center after layout updates
-        requestAnimationFrame(() => centerOnPin(pinObj));
-    }
-    // ============================================================================ 
 
     // ===== NEW (FILTER LOGIC) — START =====
     function applyAmenityFilter() {
@@ -740,6 +692,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         pinManagment.addEdges(pinObj.name, pinObj.edges);
                     })
 
+                    // rescale pins to match current zoom
+                    const zoomNumber = document.getElementById("map_zoom_number");
+                    if (zoomNumber) {
+                        const currentPercent = parseInt(zoomNumber.textContent) || 100;
+                        const oldImageX = 1000;
+                        const newImageX = 1000 * (currentPercent / 100);
+                        pinManagment.scalePins(oldImageX, newImageX);
+                    }
                   
                     updateRoomList();
                     applyAmenityFilter();
