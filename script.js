@@ -525,7 +525,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.removePin(pinObj);
             })
 
-
             clearMapPaths();
         },
 
