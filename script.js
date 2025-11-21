@@ -525,6 +525,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.removePin(pinObj);
             })
 
+            this.currentPins.clear();
+            this.focusedPin = null;
+
             clearMapPaths();
         },
 
@@ -880,6 +883,7 @@ floorButtons.forEach(btn => {
 
 function switchFloor(floorNumber) {
     pinManagment.clearMap();
+    
 
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
