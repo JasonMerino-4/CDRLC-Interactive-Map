@@ -525,16 +525,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.removePin(pinObj);
             })
 
-            this.currentPins.clear();
-            this.focusedPin = null;
 
             clearMapPaths();
         },
 
         removeEdge: function (pin1, pin2){
             if (pin1 != null && pin2 != null){
-                pin1.pinNeighbors.delete(pin2.pinName);
-                pin2.pinNeighbors.delete(pin1.pinName);
+                pin1.pinNeighbors.delete(pin2);
+                pin2.pinNeighbors.delete(pin1);
             }
         },
 
@@ -544,7 +542,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             pin.pinNeighbors.forEach((otherPin) => {
-                this.removeEdge(pin, pinManagment.pinMap.get(otherPin));
+                this.removeEdge(pin, otherPin);
             });
 
             mapWrapper.removeChild(pin.pinElement);
