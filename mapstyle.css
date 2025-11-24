@@ -344,6 +344,12 @@ line {
   gap: 8px;        /* space between buttons */
 }
 
+#map_zoom_number {
+    width: 50px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+}
 
 
 

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const zoomIn = document.getElementById("map_zoomin");
     const zoomOut = document.getElementById("map_zoomout");
     const zoomReset = document.getElementById("map_reset");
+    const zoomNumber = document.getElementById("map_zoom_number");
 
     //Map elements
     let mapWrapper = document.getElementById("map_wrapper");
@@ -718,7 +719,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // rescale pins to match current zoom
                     const zoomNumber = document.getElementById("map_zoom_number");
                     if (zoomNumber) {
-                        const currentPercent = parseInt(zoomNumber.textContent) || 100;
+                        const currentPercent = parseInt(zoomNumber.value) || 100;
                         const oldImageX = 1000;
                         const newImageX = 1000 * (currentPercent / 100);
                         pinManagment.scalePins(oldImageX, newImageX);
@@ -808,10 +809,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zoomIn.addEventListener("click", function(){
         const zoomNumber = document.getElementById("map_zoom_number");
-        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
-        let newZoom = 1000 * ((parseInt(zoomNumber.textContent) + 10)/100);
-        if (parseInt(zoomNumber.textContent) >= 400) return;
-        zoomNumber.textContent = (parseInt(zoomNumber.textContent) + 10).toString() + "%";
+
+        let currentPercent = parseInt(zoomNumber.value) || 100;
+
+        if (currentPercent >= 400) return;
+
+        let currentZoom = 1000 * (currentPercent / 100);
+        let newPercent = currentPercent + 10;
+        let newZoom = 1000 * (newPercent / 100);
+
+        zoomNumber.value = newPercent.toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
@@ -821,10 +828,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zoomOut.addEventListener("click", function(){
         const zoomNumber = document.getElementById("map_zoom_number");
-        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
-        let newZoom = 1000 * ((parseInt(zoomNumber.textContent) - 10)/100);
-        if (parseInt(zoomNumber.textContent) <= 10) return;
-        zoomNumber.textContent = (parseInt(zoomNumber.textContent) - 10).toString() + "%";
+
+        let currentPercent = parseInt(zoomNumber.value) || 100;
+
+        if (currentPercent <= 10) return;
+
+        let currentZoom = 1000 * (currentPercent / 100);
+        let newPercent = currentPercent - 10;
+        let newZoom = 1000 * (newPercent / 100);
+
+        zoomNumber.value = newPercent.toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
@@ -834,15 +847,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zoomReset.addEventListener("click", function(){
         const zoomNumber = document.getElementById("map_zoom_number");
-        let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
-        let newZoom = 1000;
-        zoomNumber.textContent = ((newZoom.toString())/10) + "%";
+
+        let currentPercent = parseInt(zoomNumber.value) || 100;
+
+        let currentZoom = 1000 * (currentPercent / 100);
+        let newPercent = 100
+        let newZoom = 1000 * (newPercent / 100);
+
+        zoomNumber.value = newPercent.toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
         pinManagment.scalePins(currentZoom, newZoom);
         drawPaths();
     })
+
+    
+
+    zoomNumber.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            zoomNumber.blur();   // triggers change
+        }
+    });
+
+    zoomNumber.addEventListener("change", function () {
+        let val = parseInt(zoomNumber.value);
+        if (isNaN(val)) val = 100;
+
+        val = Math.max(10, Math.min(val, 400));
+
+        const oldPercent = parseInt(zoomNumber.value) || 100;
+        const currentZoom = 1000 * (oldPercent / 100);
+        const newZoom = 1000 * (val / 100);
+
+        zoomNumber.value = val + "%";
+
+        mapImage.style.width = newZoom + "px";
+        fixImageSVG();
+        pinManagment.scalePins(currentZoom, newZoom);
+        drawPaths();
+    });
+
 
 const floorButtons = document.querySelectorAll("#floor_buttons button");
 let activeFloorButton = document.querySelector(".floorButtonSelected");
