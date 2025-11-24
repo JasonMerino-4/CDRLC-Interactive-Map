@@ -12,16 +12,6 @@ main {
     padding: 0px;
 }
 
-#cdrlc_background {
-    background-image: url("./images/CDRLC.jpg");
-    background-color: #777777;
-    background-blend-mode: multiply;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 16px;
-}
-
 #cdrlc_header {
     color: white;
     display: flex;
@@ -33,7 +23,12 @@ main {
     margin-bottom: 32px;
     height: 25vh;
     justify-content: space-around;
-
+    background-image: url("./images/CDRLC.jpg");
+    background-color: #777777;
+    background-blend-mode: multiply;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #address_container {
@@ -47,8 +42,8 @@ main {
 #instructions_wrapper,
 #studyroom_appointments_wrapper {
     padding: 8px 16px;
-    background-color: rgba(22, 22, 22, 0.8);
-    color: White;
+    background-color: #F5F5F7;
+    color: black;
     margin: 10px 8vw 10px;
     min-width: 256px;
 }
