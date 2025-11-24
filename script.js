@@ -128,11 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
         getIconForType(type) {
             switch (type) {
                 case "Classroom": return "icons/classroom.svg";
-                case "Room": return "icons/room.svg";
+                case "Room": return "icons/mscroom.svg";
                 case "Entrance": return "icons/entrance.svg";
                 case "Stairs": return "icons/stairs.svg";
                 case "Elevators": return "icons/elevator.svg";
-                case "Study Room": return "icons/studyrooms.svg";
+                case "Study Room": return "icons/studyroom.svg";
                 case "Bathroom": return "icons/bathroom.svg";
                 case "Path":
                 case "Hallway":
@@ -273,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 // select this one
                                 newPin.pinElement.classList.add("selected");
                                 pinManagment.focusedPin = newPin;
+                                
                                 pinManagment.findPath(pinManagment.startingPinName, pinManagment.focusedPin.pinName);
 
                                 drawPaths();
@@ -822,6 +823,19 @@ document.addEventListener("DOMContentLoaded", function () {
 const floorButtons = document.querySelectorAll("#floor_buttons button");
 let activeFloorButton = document.querySelector(".floorButtonSelected");
 
+function setActiveFloorButton(floorNumber) {
+    const btnForFloor = Array.from(floorButtons).find(
+        b => parseInt(b.dataset.floor) === floorNumber
+    );
+    if (!btnForFloor) return;
+
+    if (activeFloorButton) {
+        activeFloorButton.classList.remove("floorButtonSelected");
+    }
+    btnForFloor.classList.add("floorButtonSelected");
+    activeFloorButton = btnForFloor;
+}
+
 floorButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const selectedFloor = parseInt(btn.dataset.floor);
@@ -840,9 +854,11 @@ floorButtons.forEach(btn => {
 
 function switchFloor(floorNumber) {
     pinManagment.clearMap();
-    
-
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
+
+    // change displayed floor title number 
+    const titleEl = document.getElementById("map_title");
+    titleEl.textContent = `Floor ${floorNumber}`;
 
     return fetchData(`./Floordata/floor${floorNumber}.json`);
 }
