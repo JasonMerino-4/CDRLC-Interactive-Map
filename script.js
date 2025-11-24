@@ -26,6 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
             this.pinFloor = floor
             this.pinElement = this.createPinHTMLElement(xPosition, yPosition);
             this.pinNeighbors = new Set();
+
+            this.baseX = parseFloat(xPosition);
+            this.baseY = parseFloat(yPosition);
+
+            this.baseWidth = null;
+            this.baseHeight = null;
+            this.baseIconWidth = null;
+            this.baseIconHeight = null;
+            this.baseFontSize = null;
         }
 
         createPinHTMLElement(xPosition, yPosition) {
@@ -538,37 +547,50 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
         scalePins: function(oldImageX, newImageX){
-            let ratio = newImageX / oldImageX;
+            const ratio = newImageX / 1000;  // 1000 = base map width
 
             this.pinMap.forEach((pinObj) => {
+                // positions from base
+                pinObj.pinElement.style.left = (pinObj.baseX * ratio) + "px";
+                pinObj.pinElement.style.top  = (pinObj.baseY * ratio) + "px";
 
-            // scales the pin container
-            pinObj.pinElement.style.width  = (parseFloat(pinObj.pinElement.offsetWidth)  * ratio) + "px";
-            pinObj.pinElement.style.height = (parseFloat(pinObj.pinElement.offsetHeight) * ratio) + "px";
+                if (pinObj.baseWidth == null) {
+                    pinObj.baseWidth  = pinObj.pinElement.offsetWidth;
+                    pinObj.baseHeight = pinObj.pinElement.offsetHeight;
 
-            // scales position
-            pinObj.pinElement.style.top  = (parseFloat(pinObj.pinElement.style.top)  * ratio) + "px";
-            pinObj.pinElement.style.left = (parseFloat(pinObj.pinElement.style.left) * ratio) + "px";
+                    const icon = pinObj.pinElement.querySelector(".pin-icon");
+                    if (icon) {
+                        pinObj.baseIconWidth  = icon.offsetWidth;
+                        pinObj.baseIconHeight = icon.offsetHeight;
+                    }
 
-            // scales icon
-            const icon = pinObj.pinElement.querySelector(".pin-icon");
-            if (icon) {
-                const w = parseFloat(window.getComputedStyle(icon).width);
-                const h = parseFloat(window.getComputedStyle(icon).height);
-                icon.style.width  = (w * ratio) + "px";
-                icon.style.height = (h * ratio) + "px";
-            }
+                    const label = pinObj.pinElement.querySelector(".pin-label");
+                    if (label) {
+                        pinObj.baseFontSize = parseFloat(window.getComputedStyle(label).fontSize);
+                    }
+                }
 
-            // scales label text size
-            const label = pinObj.pinElement.querySelector(".pin-label");
-            if (label) {
-                const currentFont = parseFloat(window.getComputedStyle(label).fontSize);
-                label.style.fontSize = (currentFont * ratio) + "px";
+                // container size
+                pinObj.pinElement.style.width  = (pinObj.baseWidth  * ratio) + "px";
+                pinObj.pinElement.style.height = (pinObj.baseHeight * ratio) + "px";
+
+                // icon size
+                const icon = pinObj.pinElement.querySelector(".pin-icon");
+                if (icon && pinObj.baseIconWidth != null) {
+                    icon.style.width  = (pinObj.baseIconWidth  * ratio) + "px";
+                    icon.style.height = (pinObj.baseIconHeight * ratio) + "px";
+                }
+
+                // label font size
+                const label = pinObj.pinElement.querySelector(".pin-label");
+                if (label && pinObj.baseFontSize != null) {
+                    label.style.fontSize = (pinObj.baseFontSize * ratio) + "px";
                 }
             });
 
             drawPaths();
         },
+
 
 
         findPath(startingPin, endPin) {
@@ -788,6 +810,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomNumber = document.getElementById("map_zoom_number");
         let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
         let newZoom = 1000 * ((parseInt(zoomNumber.textContent) + 10)/100);
+        if (parseInt(zoomNumber.textContent) >= 400) return;
         zoomNumber.textContent = (parseInt(zoomNumber.textContent) + 10).toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
@@ -800,6 +823,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomNumber = document.getElementById("map_zoom_number");
         let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
         let newZoom = 1000 * ((parseInt(zoomNumber.textContent) - 10)/100);
+        if (parseInt(zoomNumber.textContent) <= 10) return;
         zoomNumber.textContent = (parseInt(zoomNumber.textContent) - 10).toString() + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
@@ -812,7 +836,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const zoomNumber = document.getElementById("map_zoom_number");
         let currentZoom = 1000 * (parseInt(zoomNumber.textContent)/100);
         let newZoom = 1000;
-        zoomNumber.textContent = "100%";
+        zoomNumber.textContent = ((newZoom.toString())/10) + "%";
 
         mapImage.style.width = newZoom.toString() + "px";
         fixImageSVG();
