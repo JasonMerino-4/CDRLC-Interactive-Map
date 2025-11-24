@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <main>
+    <div id="cdrlc_background">
         <header id="cdrlc_header">
             <title>CDRLC Map</title>
             <div id="heading_container">
@@ -30,7 +30,8 @@
         </header>
         <div id="studyroom_appointments_wrapper">
             <h3>CDRLC Studyrooms</h3>
-            <p>The CDRLC offers 5 study rooms for students to use by appointment. Appontments can be scheduled here at
+            <p>The CDRLC offers 5 study rooms for students to use by appointment. Appontments can be scheduled here
+                at
                 <a href="https://sites.google.com/uic.edu/uic-cdrlc-booking-for-students/home">CDRLC Booking</a>
             </p>
         </div>
@@ -43,16 +44,20 @@
                 </div>
                 <div class="instruction_item">
                     <dt>Browsing Floors</dt>
-                    <dd>Use the floor buttons to switch between floors. The selected floor will be used when filters are
+                    <dd>Use the floor buttons to switch between floors. The selected floor will be used when filters
+                        are
                         applied. </dd>
                 </div>
                 <div class="instruction_item">
                     <dt>Get Directions</dt>
-                    <dd>Click or input a room as a starting point and another as the destination point. Text direction
+                    <dd>Click or input a room as a starting point and another as the destination point. Text
+                        direction
                         and visual navigation will activate.</dd>
                 </div>
             </dl>
         </div>
+    </div>
+    <main>
         <div id="navbar_map_wrapper">
             <div id="directions_navbar_wrapper">
                 <div class="clean_box" id="left_nav_bar">
@@ -106,42 +111,65 @@
                 <div id="map_legend_container">
                     <h4>Legend</h4>
                     <dl id="map_legend">
-                        <div class="legend_item">
-                            <div id="classroom_legend_icon" class="legend_icon"></div>
-                            <dt>Classroom</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="studyroom_legend_icon" class="legend_icon"></div>
-                            <dt>Studyroom</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="restroom_legend_icon" class="legend_icon"></div>
-                            <dt>Restroom</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="entrance_legend_icon" class="legend_icon"></div>
-                            <dt>Entrance</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="stairs_legend_icon" class="legend_icon"></div>
-                            <dt>Stairs</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="elevator_legend_icon" class="legend_icon"></div>
-                            <dt>Elevator</dt>
-                        </div>
-                        <div class="legend_item">
-                            <div id="miscroom_legend_icon" class="legend_icon"></div>
-                            <dt>Misc. Room</dt>
-                        </div>
-                    </dl>
+
+    <div class="legend_item">
+        <div id="classroom_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/classroom.svg">
+        </div>
+        <dt>Classroom</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="studyroom_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/studyroom.svg">
+        </div>
+        <dt>Studyroom</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="restroom_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/bathroom.svg">
+        </div>
+        <dt>Restroom</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="entrance_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/entrance.svg">
+        </div>
+        <dt>Entrance</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="stairs_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/stairs.svg">
+        </div>
+        <dt>Stairs</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="elevator_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/elevator.svg">
+        </div>
+        <dt>Elevator</dt>
+    </div>
+
+    <div class="legend_item">
+        <div id="miscroom_legend_icon" class="legend_icon icon-overlay">
+            <img src="./icons/mscroom.svg">
+        </div>
+        <dt>Misc. Room</dt>
+    </div>
+
+</dl>
+
                 </div>
             </div>
         </div>
-        <footer>
-            <p>CS 422 UI Design and Programming | University of Illinois Chicago</p>
-        </footer>
     </main>
+    <footer>
+        <p>CS 422 UI Design and Programming | University of Illinois Chicago</p>
+    </footer>
 </body>
 
 </html>

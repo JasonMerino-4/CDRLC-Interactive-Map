@@ -12,10 +12,19 @@ main {
     padding: 0px;
 }
 
+#cdrlc_background {
+    background-image: url("./images/CDRLC.jpg");
+    background-color: #777777;
+    background-blend-mode: multiply;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 16px;
+}
+
 #cdrlc_header {
     color: white;
     display: flex;
-
     font-size: large;
     flex-direction: column;
     font-weight: 100;
@@ -23,14 +32,7 @@ main {
     margin: 0;
     margin-bottom: 32px;
     height: 25vh;
-    border-bottom: 1px solid #DCDCDE;
     justify-content: space-around;
-    background-image: url("./images/CDRLC.jpg");
-    background-color: #777777;
-    background-blend-mode: multiply;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
 }
 
@@ -40,6 +42,27 @@ main {
 
 .heading {
     font-weight: 400;
+}
+
+#instructions_wrapper,
+#studyroom_appointments_wrapper {
+    padding: 8px 16px;
+    background-color: rgba(22, 22, 22, 0.8);
+    color: White;
+    margin: 10px 8vw 10px;
+    min-width: 256px;
+}
+
+#instruction_list {
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.instruction_item {
+    flex: 1 1 0;
+    min-width: 256px;
 }
 
 footer {
@@ -87,21 +110,21 @@ footer {
 
 .floorButton {
     color: black;
-    border: 1px solid orangered;
     border-radius: 16px;
     height: 32px;
     flex: 1;
     background-color: white;
+    border: 1px solid #DCDCDE
 }
 
 .floorButton:hover {
-    background-color: #FFE5B4;
+    background-color: #DCDCDE;
+    border: none;
 }
 
 .floorButtonSelected {
-    color: black;
-    border: 1px solid orangered;
-    background-color: #FFE5B4;
+    border: none;
+    background-color: #DCDCDE;
 }
 
 #left_nav_bar {
@@ -121,34 +144,14 @@ dt {
 
 dd {
     margin: 0;
-    color: #4b4b4b;
-}
-
-#instructions_wrapper,
-#studyroom_appointments_wrapper {
-    padding: 8px 16px;
-    border: 1px solid #DCDCDE;
-    border-radius: 12px;
-    background-color: #F5F5F7;
-    color: black;
-    margin: 10px 8vw 10px;
-    min-width: 256px;
-}
-
-#instruction_list {
-    display: flex;
-    gap: 64px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.instruction_item {
-    flex: 1 1 0;
-    min-width: 256px;
 }
 
 h3 {
     font-weight: 400;
+}
+
+a:visited {
+    color: rgb(100, 100, 255);
 }
 
 #map_title_wrapper {
@@ -207,11 +210,12 @@ h3 {
 }
 
 .legend_icon {
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    margin-top: 6px;
+    position: relative;
 }
+
 
 .legend_item {
     display: flex;
@@ -252,4 +256,14 @@ h3 {
     border: 1px solid #DCDCDE;
     border-radius: 12px;
     background-color: white;
+}
+
+.icon-overlay img {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
 }
