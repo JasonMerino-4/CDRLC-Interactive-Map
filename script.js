@@ -128,11 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
         getIconForType(type) {
             switch (type) {
                 case "Classroom": return "icons/classroom.svg";
-                case "Room": return "icons/room.svg";
+                case "Room": return "icons/mscroom.svg";
                 case "Entrance": return "icons/entrance.svg";
                 case "Stairs": return "icons/stairs.svg";
                 case "Elevators": return "icons/elevator.svg";
-                case "Study Room": return "icons/studyrooms.svg";
+                case "Study Room": return "icons/studyroom.svg";
                 case "Bathroom": return "icons/bathroom.svg";
                 case "Path":
                 case "Hallway":
