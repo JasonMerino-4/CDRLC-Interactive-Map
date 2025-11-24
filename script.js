@@ -926,6 +926,8 @@ function switchFloor(floorNumber) {
     pinManagment.clearMap();
     mapImage.src = `Floorplans/floor${floorNumber}.svg`;
 
+    setActiveFloorButton(floorNumber);
+
     // change displayed floor title number 
     const titleEl = document.getElementById("map_title");
     titleEl.textContent = `Floor ${floorNumber}`;
