@@ -262,3 +262,21 @@ a:visited {
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
+
+#room_search,
+#start_search {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #DCDCDE;
+    border-radius: 12px;
+    font-size: 14px;
+    background-color: #f3f4f6;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#room_search:focus,
+#start_search:focus {
+    border-color: #B5B5B7;
+    background-color: #FBFBFC;
+}

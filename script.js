@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let startingPoint = null;
 
     //Inputs
     const zoomIn = document.getElementById("map_zoomin");
@@ -934,6 +935,51 @@ function switchFloor(floorNumber) {
 
     return fetchData(`./Floordata/floor${floorNumber}.json`);
 }
+document.getElementById("start_search").addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const query = e.target.value.trim().toLowerCase();
+    if (!query) return;
+
+    console.log("Enter has been pressed:", query);
+
+    // Find a pin by name or type
+    const match = allPins.find(pin => {
+        const name = String(pin.name || "").toLowerCase();
+        const type = String(pin.type || "").toLowerCase();
+        return name.includes(query) || type.includes(query);
+    });
+
+    console.log("MATCH FOUND:", match);
+
+    if (!match) {
+        console.log("NO MATCH");
+        return;
+    }
+
+    // Set starting pin
+    pinManagment.startingPinName = match.name;
+    console.log("START SET TO:", pinManagment.startingPinName);
+
+    document.querySelectorAll(".pin.start").forEach(p =>
+        p.classList.remove("start")
+    );
+
+    const pinObj = pinManagment.pinMap.get(match.name);
+    if (pinObj) {
+        pinObj.pinElement.classList.add("start");
+    }
+
+    // Remakes path if there is already destination
+    if (pinManagment.focusedPin) {
+        pinManagment.findPath(
+            pinManagment.startingPinName,
+            pinManagment.focusedPin.pinName
+        );
+        drawPaths();
+    }
+});
+
 
 })
 
