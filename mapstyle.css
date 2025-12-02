@@ -351,6 +351,9 @@ line {
     font-size: 16px;
 }
 
+#left_nav_bar > * + * {
+  margin-top: 20px;   /* adjust to taste */
+}
 
 
 
